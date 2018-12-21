@@ -6,18 +6,21 @@ import TodoList from './models/TodoList';
 @observer
 class TodoListView extends React.Component<any> {
   onClick = () => {
-    this.props.todoList.addTodo('');
+    this.props.store.addTodo('');
   }
 
   render() {
+    const { store } = this.props;
+
     return (
       <div>
         <ul>
-          {this.props.todoList.todos.map((todo: any) =>
+          {store.todos.map((todo: any) =>
               <TodoView todo={todo} key={todo.id} />
           )}
         </ul>
-        Tasks left: {this.props.todoList.unfinishedTodoCount}
+        <p>Tasks left: {store.unfinishedTodoCount}</p>
+        <p>Tasks done: {store.finishedTodoCount}</p>
         <button onClick={this.onClick}>add todo</button>
       </div>);
   }
@@ -39,11 +42,9 @@ const TodoView = observer(({ todo }) => {
   );
 });
 
-const store = new TodoList();
-
 export default () => (
   <div>
-    <TodoListView todoList={store} />
+    <TodoListView store={TodoList} />
     <MobxReactDevtools />
   </div>
 );

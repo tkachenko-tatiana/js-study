@@ -1,7 +1,7 @@
 
 import { observable, computed, action } from 'mobx';
 
-export default class TodoList {
+class TodoList {
   @observable todos = [{
     title: 'test',
     id: Math.random(),
@@ -10,6 +10,10 @@ export default class TodoList {
 
   @computed get unfinishedTodoCount() {
     return this.todos.filter((todo: any) => !todo.finished).length;
+  }
+
+  @computed get finishedTodoCount() {
+    return this.todos.filter((todo: any) => todo.finished).length;
   }
 
   @action
@@ -21,3 +25,5 @@ export default class TodoList {
     });
   }
 }
+
+export default new TodoList();

@@ -4,6 +4,7 @@
   "description": "App for study",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^3.7.1",
     "bcrypt": "^3.0.2",
     "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
@@ -12,6 +13,7 @@
     "express-session": "^1.15.6",
     "helmet": "^3.15.0",
     "http-errors": "~1.6.2",
+    "lerna": "^3.8.0",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "mobx-react-devtools": "^6.0.3",
@@ -22,6 +24,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.4.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "sequelize": "^4.41.2",
     "sequelize-cli": "^4.0.0",
@@ -42,6 +45,7 @@
     "@types/node": "^10.12.9",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
+    "@types/react-router": "^4.4.3",
     "@types/react-router-dom": "^4.3.0",
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -104,7 +108,7 @@
     ]
   },
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --hot"
+    "dev": "NODE_ENV=dev webpack-dev-server"
   },
   "version": "0.0.1"
 }

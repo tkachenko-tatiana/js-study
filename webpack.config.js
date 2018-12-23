@@ -6,10 +6,11 @@ const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
 const merge = require('webpack-merge');
 
 const webpackConfig = (env) => {
-  const isDevelopment = env === 'development';
+  const isDevelopment = env === 'dev';
 
   const commonConfig = {
     context: path.resolve(__dirname, 'src'),
+    entry: './index.tsx',
     output: {
       filename: '[name]-[hash:8].js',
       chunkFilename: '[name]-[hash:8].js',
@@ -76,12 +77,6 @@ const webpackConfig = (env) => {
 
   const configDevelopment = merge.smart(commonConfig, {
     mode: 'development',
-    entry: {
-      app: [
-        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
-        './index.tsx',
-      ],
-    },
     output: {
       devtoolModuleFilenameTemplate: info =>
         path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
@@ -90,15 +85,23 @@ const webpackConfig = (env) => {
       new webpack.HotModuleReplacementPlugin(), // Enable HMR
     ],
     // Enable sourcemaps for debugging webpack's output.
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
+    devServer: {
+      hot: true,
+      port: 3000,
+      host: 'localhost',
+      contentBase: path.resolve(__dirname, '..', 'src'),
+      watchContentBase: true,
+      historyApiFallback: true,
+    }
   });
 
   const configProduction = merge.smart(commonConfig, {
     mode: 'production',
-    entry: './index.tsx',
     plugins: [
       new CleanWebpackPlugin(['dist']),
     ],
+    performance: false,
   });
 
   const config = isDevelopment ? configDevelopment : configProduction;

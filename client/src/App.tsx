@@ -12,7 +12,7 @@ import { default as SignIn } from './routes/SignIn';
 class TodoListView extends React.Component<any> {
   onClick = () => {
     this.props.store.addTodo('');
-  }
+  };
 
   render() {
     const { store } = this.props;

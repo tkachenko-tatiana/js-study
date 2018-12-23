@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      }
-    ],
     "experimentalDecorators": true,
-    "outDir": "./dist/",
+    "outDir": "./build/",
     "strict": true,
     "baseUrl": "./",
     "noImplicitAny": true,
@@ -29,8 +24,8 @@
     "lib": ["es6", "dom"]
   },
   "include": [
-      "./src/**/*",
-      "./jest_config/setupTests.js"
+      "src/**/*.ts",
+      "src/**/*.tsx"
   ],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "build"]
 }

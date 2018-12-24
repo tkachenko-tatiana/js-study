@@ -2,7 +2,6 @@ process.on('unhandledRejection', err => {
   throw err;
 });
 
-const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
@@ -13,7 +12,7 @@ const {
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
-const config = require('../config/webpack.config');
+const config = require('../configs/webpack.dev.config');
 
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;

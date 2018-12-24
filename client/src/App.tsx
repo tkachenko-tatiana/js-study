@@ -3,10 +3,11 @@ import { observer } from 'mobx-react';
 import { default as MobxReactDevtools } from 'mobx-react-devtools';
 import { Route } from 'react-router';
 import { Switch, Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 import TodoList from './models/TodoList';
-import { default as Layout } from './layout';
-import { default as SignIn } from './routes/SignIn';
+import Layout from './layout';
+import SignIn from './routes/SignIn';
 
 @observer
 class TodoListView extends React.Component<any> {
@@ -26,7 +27,7 @@ class TodoListView extends React.Component<any> {
         </ul>
         <p>Tasks left: {store.unfinishedTodoCount}</p>
         <p>Tasks done: {store.finishedTodoCount}</p>
-        <button onClick={this.onClick}>add todo</button>
+        <Button onClick={this.onClick}>add todo</Button>
         <Link to="signin">link to </Link>
       </div>);
   }

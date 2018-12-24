@@ -2,12 +2,13 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { default as MobxReactDevtools } from 'mobx-react-devtools';
 import { Route } from 'react-router';
-import { Switch, Link } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import TodoList from './models/TodoList';
 import Layout from './layout';
 import SignIn from './routes/SignIn';
+import Login from './routes/Login';
 
 @observer
 class TodoListView extends React.Component<any> {
@@ -28,7 +29,6 @@ class TodoListView extends React.Component<any> {
         <p>Tasks left: {store.unfinishedTodoCount}</p>
         <p>Tasks done: {store.finishedTodoCount}</p>
         <Button onClick={this.onClick}>add todo</Button>
-        <Link to="signin">link to </Link>
       </div>);
   }
 }
@@ -58,6 +58,7 @@ const App = () => (
       <Switch>
         <Route path="/" component={test} exact />
         <Route path="/signin" title="Sign In" component={SignIn}/>
+        <Route path="/login" title="Login" component={Login}/>
       </Switch>
     </Layout>
 

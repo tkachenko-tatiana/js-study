@@ -1,10 +1,11 @@
 import * as React from 'react';
+import Header from './components/Header';
 
 export default class Layout extends React.Component<any> {
   render() {
     return (
     <div>
-        <header>header</header>
+        <Header />
 
         <main role="main">
           {this.props.children}

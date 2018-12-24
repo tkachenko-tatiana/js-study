@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { WithPortal } from '../SignInForm';
+import SignInForm from '../SignInForm';
 
 const SignIn = () => (
   <div>
-    <WithPortal />
+    <SignInForm />
   </div>
 );
 

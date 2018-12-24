@@ -3,12 +3,12 @@
     "tslint-config-airbnb",
     "tslint:recommended",
     "tslint-eslint-rules",
-    "tslint:latest",
     "tslint-react"
   ],
   "jsRules": {},
   "rules": {
     "indent": [true, "spaces", 2],
+    "import-name": false,
     "ter-indent": [true, 2],
     "jsx-no-multiline-js": false,
     "jsx-boolean-value": false,
@@ -20,6 +20,7 @@
     "member-access": false,
     // Disallows one or more blank lines in a row.
     "no-consecutive-blank-lines": true,
+    "no-console":false,
     "no-empty-interface": false,
     "no-implicit-dependencies": [true, ["enzyme", "enzyme-adapter-react-16"]],
     "no-shadowed-variable": [

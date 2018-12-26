@@ -3,7 +3,7 @@ import {
 } from 'typeorm';
 import Course from './Course';
 import User from './User';
-import { IUserCourse } from '../../sdk/models/User';
+import { IUserCourse } from '../../../sdk/models/User';
 
 @Entity('users_courses')
 export default class UserCourse implements IUserCourse {

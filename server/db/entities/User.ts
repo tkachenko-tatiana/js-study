@@ -2,7 +2,7 @@
 import {
   Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn,
 } from 'typeorm';
-import { IUser } from '../../sdk/models/User';
+import { IUser } from '../../../sdk/models/User';
 
 @Entity('users')
 export default class User implements IUser {

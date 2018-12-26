@@ -1,9 +1,8 @@
-import TextField, { OutlinedTextFieldProps } from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import { FieldProps } from 'formik';
-import { Omit } from '../../../../sdk/types';
 
-export interface ITextFieldProps extends FieldProps, Omit<OutlinedTextFieldProps, 'variant'> {
+export interface ITextFieldProps extends FieldProps {
   displayedValue?: (value: string) => string;
 }
 

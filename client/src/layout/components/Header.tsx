@@ -44,8 +44,12 @@ const Header: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
           <Link to="/" className={classes.toolbarHomeLink} >App name</Link>
         </Typography>
         <div>
-          <StyledLink to="signin" className={classes.appBarButton} text="Signin" />
-          <StyledLink to="login" className={classes.appBarButton} text="Login" />
+          <StyledLink to="signin" className={classes.appBarButton}>
+            Signin
+          </StyledLink>
+          <StyledLink to="login" className={classes.appBarButton}>
+            Login
+          </StyledLink>
         </div>
       </Toolbar>
     </AppBar>

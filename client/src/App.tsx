@@ -1,67 +1,23 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
 import { default as MobxReactDevtools } from 'mobx-react-devtools';
 import { Route } from 'react-router';
 import { Switch } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-
-import TodoList from './models/TodoList';
 import Layout from './layout';
 import SignIn from './routes/SignIn';
 import Login from './routes/Login';
-
-@observer
-class TodoListView extends React.Component<any> {
-  onClick = () => {
-    this.props.store.addTodo('');
-  };
-
-  render() {
-    const { store } = this.props;
-
-    return (
-      <div>
-        <ul>
-          {store.todos.map((todo: any) =>
-            <TodoView todo={todo} key={todo.id} />
-          )}
-        </ul>
-        <p>Tasks left: {store.unfinishedTodoCount}</p>
-        <p>Tasks done: {store.finishedTodoCount}</p>
-        <Button onClick={this.onClick}>add todo</Button>
-      </div>);
-  }
-}
-
-const TodoView = observer(({ todo }) => {
-  const onChangeHandler = () => {
-    todo.finished = !todo.finished;
-  };
-
-  return (
-    <li>
-      <input
-        type="checkbox"
-        checked={todo.finished}
-        onChange={onChangeHandler}
-      />{todo.title}
-    </li>
-  );
-});
-
-const test = () => <TodoListView store={TodoList} />;
+import { TodoListWithStore } from './MobXExample';
+import Routes from './routes/Routes';
 
 const App = () => (
   <React.Fragment>
     <MobxReactDevtools />
     <Layout>
       <Switch>
-        <Route path="/" component={test} exact />
-        <Route path="/signin" title="Sign In" component={SignIn}/>
-        <Route path="/login" title="Login" component={Login}/>
+        <Route path={Routes.Main} component={TodoListWithStore} exact />
+        <Route path={Routes.Signin} title="Sign In" component={SignIn}/>
+        <Route path={Routes.Login} title="Login" component={Login}/>
       </Switch>
     </Layout>
-
   </React.Fragment>
 );
 

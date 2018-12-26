@@ -2,7 +2,7 @@
 import {
   Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn,
 } from 'typeorm';
-import { ICourse } from '../../sdk/models/Course';
+import { ICourse } from '../../../sdk/models/Course';
 
 @Entity('courses')
 export default class Course implements ICourse {

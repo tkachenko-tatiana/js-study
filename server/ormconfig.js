@@ -12,10 +12,10 @@ module.exports = {
   type: "postgres",
   url: dbURl,
   logging: process.env.NODE_ENV === 'development',
-  entities: [__dirname + "/entities/*"],
-  migrations: [__dirname + "/migrations/*"],
+  entities: [__dirname + "/db/entities/*"],
+  migrations: [__dirname + "/db/migrations/*"],
   cli: {
-    entitiesDir: "/entities",
-    migrationsDir: "/migrations"
+    entitiesDir: "db/entities",
+    migrationsDir: "db/migrations"
   }
 }

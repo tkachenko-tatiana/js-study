@@ -1,7 +1,7 @@
 const Routes = {
   Main: '/',
   Login: '/login',
-  Signin: '/signin',
+  Registration: '/registration',
   ForgotPassword: '/login/forgotPassword',
 };
 

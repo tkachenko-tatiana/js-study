@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
 import TextFieldForm from '../../_shared/Form/TextField';
@@ -7,25 +6,15 @@ import { withStyles, WithStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import { required } from '../../utils/validate';
-import StyledLink from '../../_shared/StyledLink';
-import Routes from '../Routes';
 import { commonStyles } from '../../_shared/styles';
-
-interface ILoginFormValues {
-  uid: string;
-  password: string;
-}
 
 interface IProps {}
 
 const styles = () => createStyles({
   paper: commonStyles.paperForm,
-  forgotPassword: {
-    margin: '15px 0',
-  }
 });
 
-const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
+const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
   const { classes } = props;
 
   const onSubmit = () => {
@@ -34,42 +23,37 @@ const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
 
   return (
     <Formik
-      initialValues={{} as ILoginFormValues}
+      initialValues={{} as any}
       onSubmit={onSubmit}
     >
-    {({ isSubmitting, values }) => (
+    {({ isSubmitting }) => (
       <Paper className={classes.paper}>
         <Form>
           <Field
-            id="uid-field"
-            name="uid"
-            label="Login"
+            id="uid-name-field"
+            name="uid-name"
+            label="Name"
             fullWidth
             component={TextFieldForm}
             validate={required}
           />
           <Field
-            id="password-field"
-            name="password"
-            type="password"
-            label="Password"
+            id="email-field"
+            name="email"
+            type="email"
+            label="email"
             fullWidth
             component={TextFieldForm}
             validate={required}
           />
-          <div className={classes.forgotPassword}>
-            <StyledLink
-              to={{
-                pathname: Routes.ForgotPassword,
-                state: { email: values.uid }
-              }}
-              size="small"
-              color="default"
-              variant="text"
-            >
-              Forgot your password?
-            </StyledLink>
-          </div>
+          <Field
+            id="uid-username-field"
+            name="uid-username"
+            label="user name"
+            fullWidth
+            component={TextFieldForm}
+            validate={required}
+          />
           <Button
             fullWidth
             color="primary"
@@ -77,7 +61,7 @@ const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
             variant="outlined"
             disabled={isSubmitting}
           >
-            Login
+            registration
           </Button>
         </Form>
       </Paper>
@@ -86,4 +70,4 @@ const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
   );
 };
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(RegistrationForm);

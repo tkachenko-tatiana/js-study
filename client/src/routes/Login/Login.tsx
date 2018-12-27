@@ -2,9 +2,7 @@ import * as React from 'react';
 import LoginForm from '../LoginForm';
 
 const Login = () => (
-  <div>
-    <LoginForm />
-  </div>
+  <LoginForm />
 );
 
 export default Login;

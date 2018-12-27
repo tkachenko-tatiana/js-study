@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
@@ -16,7 +17,9 @@ interface ILoginFormValues {
   password: string;
 }
 
-interface IProps {}
+interface IProps {
+  store: any;
+}
 
 const styles = () => createStyles({
   paper: commonStyles.paperForm,
@@ -25,11 +28,11 @@ const styles = () => createStyles({
   }
 });
 
-const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
-  const { classes } = props;
+const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) => {
+  const { classes, store } = props;
 
   const onSubmit = () => {
-    console.log('submit');
+    store.registerUser();
   };
 
   return (
@@ -84,6 +87,6 @@ const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
     )}
   </Formik>
   );
-};
+});
 
 export default withStyles(styles)(LoginForm);

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
 import TextFieldForm from '../../_shared/Form/TextField';
@@ -8,17 +10,19 @@ import Paper from '@material-ui/core/Paper';
 import { required } from '../../utils/validate';
 import { commonStyles } from '../../_shared/styles';
 
-interface IProps {}
+interface IProps {
+  store: any;
+}
 
 const styles = () => createStyles({
   paper: commonStyles.paperForm,
 });
 
-const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
-  const { classes } = props;
+const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) => {
+  const { classes, store } = props;
 
   const onSubmit = () => {
-    console.log('submit');
+    store.registerUser();
   };
 
   return (
@@ -68,6 +72,6 @@ const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = (props) 
     )}
   </Formik>
   );
-};
+});
 
 export default withStyles(styles)(RegistrationForm);

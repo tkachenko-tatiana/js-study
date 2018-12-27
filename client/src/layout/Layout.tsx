@@ -1,11 +1,16 @@
 import * as React from 'react';
 import Header from './components/Header';
+import User from '../models/User';
 
-export default class Layout extends React.Component<any> {
+interface IProps {
+  children: JSX.Element | null;
+}
+
+export default class Layout extends React.Component<IProps> {
   render() {
     return (
     <div>
-        <Header />
+        <Header store={User} />
 
         <main role="main">
           {this.props.children}

@@ -5,7 +5,6 @@ import { Switch } from 'react-router-dom';
 import Layout from './layout';
 import Registration from './routes/Registration';
 import Login from './routes/Login';
-import { TodoListWithStore } from './MobXExample';
 import Routes from './routes/Routes';
 
 const App = () => (
@@ -13,7 +12,7 @@ const App = () => (
     <MobxReactDevtools />
     <Layout>
       <Switch>
-        <Route path={Routes.Main} component={TodoListWithStore} exact />
+        <Route path={Routes.Main} component={() => <div>main part</div>} exact />
         <Route path={Routes.Registration} title="Registration" component={Registration}/>
         <Route path={Routes.Login} title="Login" component={Login}/>
       </Switch>

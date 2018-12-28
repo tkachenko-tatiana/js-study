@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles, WithStyles, createStyles, Theme } from '@material-ui/core/styles';
+import SignOutAuthButton from '../../_shared/SignOutButton';
+import Routes from '../../routes/Routes';
 
 import StyledLink from '../../_shared/StyledLink';
-import { Link } from 'react-router-dom';
 
 const styles = (theme: Theme) => createStyles({
   appBar: {
@@ -28,10 +32,12 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-interface IProps {}
+interface IHeaderProps {
+  store: any;
+}
 
-const Header: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
-  const { classes } = props;
+const Header: React.SFC<IHeaderProps & WithStyles<typeof styles>> = (props) => {
+  const { classes, store } = props;
 
   return (
     <AppBar position="static" className={classes.appBar}>
@@ -41,19 +47,25 @@ const Header: React.SFC<IProps & WithStyles<typeof styles>> = (props) => {
           color="inherit"
           noWrap
         >
-          <Link to="/" className={classes.toolbarHomeLink} >App name</Link>
+          <Link to={Routes.Main} className={classes.toolbarHomeLink} >App name</Link>
         </Typography>
         <div>
-          <StyledLink to="registration" className={classes.appBarButton}>
-            Registration
-          </StyledLink>
-          <StyledLink to="login" className={classes.appBarButton}>
-            Login
-          </StyledLink>
+          {store.isRegistered ?
+            <SignOutAuthButton className={classes.appBarButton} user={store.user} /> :
+            (
+              <React.Fragment>
+                <StyledLink to={Routes.Login} className={classes.appBarButton}>
+                  Login
+                </StyledLink>
+                <StyledLink to={Routes.Registration} className={classes.appBarButton}>
+                  Register
+                </StyledLink>
+              </React.Fragment>
+            )}
         </div>
       </Toolbar>
     </AppBar>
   );
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(observer(Header));

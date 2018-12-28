@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-interface IProps {
-  children: JSX.Element | null;
+interface IPortalProps {
+  children: JSX.Element | string | null;
 }
 
 const portalRoot = document.getElementById('portal');
 
-class Portal extends React.Component<IProps> {
+class Portal extends React.Component<IPortalProps> {
   el: HTMLElement;
 
-  constructor(props: IProps) {
+  constructor(props: IPortalProps) {
     super(props);
     this.el = document.createElement('div');
   }

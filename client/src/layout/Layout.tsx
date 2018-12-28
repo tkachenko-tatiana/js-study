@@ -2,11 +2,11 @@ import * as React from 'react';
 import Header from './components/Header';
 import User from '../models/User';
 
-interface IProps {
-  children: JSX.Element | null;
+interface ILayoutProps {
+  children: JSX.Element | string | null;
 }
 
-export default class Layout extends React.Component<IProps> {
+export default class Layout extends React.Component<ILayoutProps> {
   render() {
     return (
     <div>

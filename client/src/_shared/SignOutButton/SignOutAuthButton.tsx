@@ -1,11 +1,18 @@
 import * as React from 'react';
+import { withRouter } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import { RouteComponentProps } from 'react-router';
 import Button from '@material-ui/core/Button';
 
 import Routes from '../../routes/Routes';
 
-const SignOutAuthButton: React.SFC<any> = observer((props) => {
-  const { history, className, user, ...rest } = props;
+interface ISignOutWithRouterProps extends RouteComponentProps {
+  className: string;
+  user: any;
+}
+
+const SignOutAuthButton: React.SFC<ISignOutWithRouterProps> = (props) => {
+  const { history, className, user, staticContext, ...rest } = props;
 
   const onClick = () => {
     user.isRegistered = false;
@@ -21,6 +28,6 @@ const SignOutAuthButton: React.SFC<any> = observer((props) => {
         Logout
       </Button>
     );
-});
+};
 
-export default SignOutAuthButton;
+export default observer(withRouter(SignOutAuthButton));

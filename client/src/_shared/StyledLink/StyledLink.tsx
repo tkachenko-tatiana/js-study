@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { Link, LinkProps } from 'react-router-dom';
+import Button, { ButtonProps } from '@material-ui/core/Button';
 
-class StyledLink extends React.Component<any> {
+interface IStyledLinkProps extends ButtonProps {
+  to: LinkProps['to'];
+  disabled?: boolean;
+  className?: string;
+  children: JSX.Element | string | null;
+}
+
+class StyledLink extends React.Component<IStyledLinkProps> {
   handleClick = (event: React.SyntheticEvent) => {
     if (this.props.disabled) {
       event.preventDefault();
@@ -23,4 +30,5 @@ class StyledLink extends React.Component<any> {
     );
   }
 }
+
 export default StyledLink;

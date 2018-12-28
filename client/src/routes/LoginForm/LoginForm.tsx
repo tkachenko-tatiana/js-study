@@ -17,7 +17,7 @@ interface ILoginFormValues {
   password: string;
 }
 
-interface IProps {
+interface ILoginFormProps {
   store: any;
 }
 
@@ -28,7 +28,7 @@ const styles = () => createStyles({
   }
 });
 
-const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) => {
+const LoginForm: React.SFC<ILoginFormProps & WithStyles<typeof styles>> = (props) => {
   const { classes, store } = props;
 
   const onSubmit = () => {
@@ -87,6 +87,6 @@ const LoginForm: React.SFC<IProps & WithStyles<typeof styles>> = observer((props
     )}
   </Formik>
   );
-});
+};
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(observer(LoginForm));

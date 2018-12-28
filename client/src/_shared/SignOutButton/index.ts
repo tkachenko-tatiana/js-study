@@ -1,1 +1,1 @@
-export { default } from './SignOutWithRouter';
+export { default } from './SignOutAuthButton';

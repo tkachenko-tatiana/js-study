@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { required } from '../../utils/validate';
 import { commonStyles } from '../../_shared/styles';
 
-interface IProps {
+interface IRegistrationFormProps {
   store: any;
 }
 
@@ -18,7 +18,7 @@ const styles = () => createStyles({
   paper: commonStyles.paperForm,
 });
 
-const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) => {
+const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof styles>> = (props) => {
   const { classes, store } = props;
 
   const onSubmit = () => {
@@ -72,6 +72,6 @@ const RegistrationForm: React.SFC<IProps & WithStyles<typeof styles>> = observer
     )}
   </Formik>
   );
-});
+};
 
-export default withStyles(styles)(RegistrationForm);
+export default withStyles(styles)(observer(RegistrationForm));

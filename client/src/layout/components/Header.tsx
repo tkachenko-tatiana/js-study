@@ -6,7 +6,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles, WithStyles, createStyles, Theme } from '@material-ui/core/styles';
-import SignOutWithRouter from '../../_shared/SignOutButton';
+import SignOutAuthButton from '../../_shared/SignOutButton';
+import Routes from '../../routes/Routes';
 
 import StyledLink from '../../_shared/StyledLink';
 
@@ -31,11 +32,11 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-interface IProps {
+interface IHeaderProps {
   store: any;
 }
 
-const Header: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) => {
+const Header: React.SFC<IHeaderProps & WithStyles<typeof styles>> = (props) => {
   const { classes, store } = props;
 
   return (
@@ -46,18 +47,18 @@ const Header: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) =
           color="inherit"
           noWrap
         >
-          <Link to="/" className={classes.toolbarHomeLink} >App name</Link>
+          <Link to={Routes.Main} className={classes.toolbarHomeLink} >App name</Link>
         </Typography>
         <div>
           {store.isRegistered ?
-            <SignOutWithRouter className={classes.appBarButton} user={store.user} /> :
+            <SignOutAuthButton className={classes.appBarButton} user={store.user} /> :
             (
               <React.Fragment>
-                <StyledLink to="login" className={classes.appBarButton}>
+                <StyledLink to={Routes.Login} className={classes.appBarButton}>
                   Login
                 </StyledLink>
-                <StyledLink to="registration" className={classes.appBarButton}>
-                  Registration
+                <StyledLink to={Routes.Registration} className={classes.appBarButton}>
+                  Register
                 </StyledLink>
               </React.Fragment>
             )}
@@ -65,6 +66,6 @@ const Header: React.SFC<IProps & WithStyles<typeof styles>> = observer((props) =
       </Toolbar>
     </AppBar>
   );
-});
+};
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(observer(Header));

@@ -16,7 +16,6 @@ class User {
 
   @action
   registerUser() {
-    console.log('registerUser ', this.user);
     this.user.isRegistered = true;
   }
 }

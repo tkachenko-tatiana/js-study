@@ -3,9 +3,9 @@
     "experimentalDecorators": true,
     "outDir": "./build/",
     "strict": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "noImplicitAny": true,
-    "target": "es5",
+    "target": "esnext",
     "jsx": "react",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -24,8 +24,10 @@
     "lib": ["es6", "dom"]
   },
   "include": [
+      "./*.ts",
       "src/**/*.ts",
-      "src/**/*.tsx"
+      "src/**/*.tsx",
+      "../typings.d.ts",
   ],
   "exclude": ["node_modules", "build"]
 }

@@ -1,9 +1,14 @@
 
 ## Development
+### Installation
 
-```
-npm i
+Dependencies:
+ * NodeJS ^8.11.3
+
+1. Run development build
+
+```sh
+npm install
+npm run db:migrate
 npm run dev
-
-open in browser http://localhost:3000
 ```

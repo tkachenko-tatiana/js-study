@@ -4,13 +4,13 @@ import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
 import TextFieldForm from '../../_shared/Form/TextField';
-import { withStyles, WithStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import { required } from '../../utils/validate';
 import StyledLink from '../../_shared/StyledLink';
 import Routes from '../Routes';
-import { commonStyles } from '../../_shared/styles';
+
+import styles from '../../layout/Layout.scss';
 
 interface ILoginFormValues {
   uid: string;
@@ -21,15 +21,8 @@ interface ILoginFormProps {
   store: any;
 }
 
-const styles = () => createStyles({
-  paper: commonStyles.paperForm,
-  forgotPassword: {
-    margin: '15px 0',
-  }
-});
-
-const LoginForm: React.SFC<ILoginFormProps & WithStyles<typeof styles>> = (props) => {
-  const { classes, store } = props;
+const LoginForm: React.SFC<ILoginFormProps> = (props) => {
+  const { store } = props;
 
   const onSubmit = () => {
     store.registerUser();
@@ -41,12 +34,12 @@ const LoginForm: React.SFC<ILoginFormProps & WithStyles<typeof styles>> = (props
       onSubmit={onSubmit}
     >
     {({ isSubmitting, values }) => (
-      <Paper className={classes.paper}>
+      <Paper className={styles.paperForm}>
         <Form>
           <Field
             id="uid-field"
             name="uid"
-            label="Login"
+            label="Login*"
             fullWidth
             component={TextFieldForm}
             validate={required}
@@ -55,12 +48,12 @@ const LoginForm: React.SFC<ILoginFormProps & WithStyles<typeof styles>> = (props
             id="password-field"
             name="password"
             type="password"
-            label="Password"
+            label="Password*"
             fullWidth
             component={TextFieldForm}
             validate={required}
           />
-          <div className={classes.forgotPassword}>
+          <div className={styles.forgotPassword}>
             <StyledLink
               to={{
                 pathname: Routes.ForgotPassword,
@@ -89,4 +82,4 @@ const LoginForm: React.SFC<ILoginFormProps & WithStyles<typeof styles>> = (props
   );
 };
 
-export default withStyles(styles)(observer(LoginForm));
+export default observer(LoginForm);

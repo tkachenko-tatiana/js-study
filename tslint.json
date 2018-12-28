@@ -39,6 +39,7 @@
     "no-boolean-literal-compare": true,
     "no-submodule-imports": false,
     "ordered-imports": false,
+    "prefer-array-literal": false,
     "prefer-const": true,
     "quotemark": [true, "single", "jsx-double"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],

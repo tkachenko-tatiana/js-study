@@ -2,10 +2,12 @@ import { ICourse } from './Course';
 
 export interface IUser {
   id: number;
-  userName: string;
   email: string;
   password: string;
   salt: string;
+  activationToken: string | null;
+  firstName: string;
+  lastName: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

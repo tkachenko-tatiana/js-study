@@ -8,4 +8,8 @@ export default class UserRepository extends GenericRepository<UserEntity, IUser>
   constructor(manager?: EntityManager) {
     super(UserEntity, manager);
   }
+
+  public findByActivationToken(token: string) {
+    return this.findOne({ where: { activationToken: token } });
+  }
 }

@@ -53,10 +53,11 @@ const RegistrationForm: React.SFC<IRegistrationFormProps> = (props) => {
             validate={required}
           />
           <Button
+            className={styles.submitButton}
             fullWidth
             color="primary"
             type="submit"
-            variant="outlined"
+            variant="contained"
             disabled={isSubmitting}
           >
             registration

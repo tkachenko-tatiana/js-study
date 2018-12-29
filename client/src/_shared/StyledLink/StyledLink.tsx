@@ -4,9 +4,6 @@ import Button, { ButtonProps } from '@material-ui/core/Button';
 
 interface IStyledLinkProps extends ButtonProps {
   to: LinkProps['to'];
-  disabled?: boolean;
-  className?: string;
-  children: JSX.Element | string | null;
 }
 
 class StyledLink extends React.Component<IStyledLinkProps> {
@@ -21,10 +18,10 @@ class StyledLink extends React.Component<IStyledLinkProps> {
     <Link {...itemProps} to={this.props.to} onClick={this.handleClick} />;
 
   render() {
-    const { children, className = '', disabled = false } = this.props;
+    const { children, className = '', disabled = false, ...rest } = this.props;
 
     return (
-      <Button component={this.renderLink} disabled={disabled} className={className}>
+      <Button component={this.renderLink} disabled={disabled} className={className} {...rest}>
         {children}
       </Button>
     );

@@ -67,10 +67,11 @@ const LoginForm: React.SFC<ILoginFormProps> = (props) => {
             </StyledLink>
           </div>
           <Button
+            className={styles.submitButton}
             fullWidth
             color="primary"
             type="submit"
-            variant="outlined"
+            variant="contained"
             disabled={isSubmitting}
           >
             Login

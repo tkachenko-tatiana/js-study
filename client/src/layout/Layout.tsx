@@ -5,7 +5,7 @@ import User from '../models/User';
 import './Layout.scss';
 
 interface ILayoutProps {
-  children: JSX.Element | string | null;
+  children: React.ReactNode;
 }
 
 export default class Layout extends React.Component<ILayoutProps> {

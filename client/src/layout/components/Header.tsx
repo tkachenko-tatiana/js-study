@@ -30,13 +30,13 @@ const Header: React.SFC<IHeaderProps> = (props) => {
         </Typography>
         <div>
           {store.isRegistered ?
-            <SignOutAuthButton className={styles.appBarButton} user={store.user} /> :
+            <SignOutAuthButton className={styles.appBarButton} user={store.user} color="inherit" /> :
             (
               <React.Fragment>
-                <StyledLink to={Routes.Login} className={styles.appBarButton}>
+                <StyledLink to={Routes.Login} className={styles.appBarButton} color="inherit">
                   Login
                 </StyledLink>
-                <StyledLink to={Routes.Registration} className={styles.appBarButton}>
+                <StyledLink to={Routes.Registration} className={styles.appBarButton} color="inherit">
                   Register
                 </StyledLink>
               </React.Fragment>

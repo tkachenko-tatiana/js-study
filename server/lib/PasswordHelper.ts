@@ -12,6 +12,6 @@ export default class PasswordHelper {
   }
 
   static checkPassword(password: string, salt: string, hash: string) {
-    return true;
+    return hash === crypto.pbkdf2Sync(password, salt, HASH_ITERATIONS, HASH_KEYLEN, HASH_DIGEST).toString('hex');
   }
 }

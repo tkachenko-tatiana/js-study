@@ -23,7 +23,7 @@
     "ts-jest": "^23.10.4",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^2.9.2",
+    "typescript": "^3.2.2",
     "typescript-eslint-parser": "^20.1.1",
     "webpack": "^4.25.1"
   },

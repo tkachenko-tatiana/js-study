@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 interface IPortalProps {
-  children: JSX.Element | string | null;
+  children: React.ReactNode;
 }
 
 const portalRoot = document.getElementById('portal');

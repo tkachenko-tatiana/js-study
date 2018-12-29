@@ -4,22 +4,17 @@ import { observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
 import TextFieldForm from '../../_shared/Form/TextField';
-import { withStyles, WithStyles, createStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import { required } from '../../utils/validate';
-import { commonStyles } from '../../_shared/styles';
+import styles from '../../layout/Layout.scss';
 
 interface IRegistrationFormProps {
   store: any;
 }
 
-const styles = () => createStyles({
-  paper: commonStyles.paperForm,
-});
-
-const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof styles>> = (props) => {
-  const { classes, store } = props;
+const RegistrationForm: React.SFC<IRegistrationFormProps> = (props) => {
+  const { store } = props;
 
   const onSubmit = () => {
     store.registerUser();
@@ -31,7 +26,7 @@ const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof sty
       onSubmit={onSubmit}
     >
     {({ isSubmitting }) => (
-      <Paper className={classes.paper}>
+      <Paper className={styles.paperForm}>
         <Form>
           <Field
             id="uid-name-field"
@@ -39,13 +34,12 @@ const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof sty
             label="Name"
             fullWidth
             component={TextFieldForm}
-            validate={required}
           />
           <Field
             id="email-field"
             name="email"
             type="email"
-            label="email"
+            label="email*"
             fullWidth
             component={TextFieldForm}
             validate={required}
@@ -53,16 +47,17 @@ const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof sty
           <Field
             id="uid-username-field"
             name="uid-username"
-            label="user name"
+            label="user name*"
             fullWidth
             component={TextFieldForm}
             validate={required}
           />
           <Button
+            className={styles.submitButton}
             fullWidth
             color="primary"
             type="submit"
-            variant="outlined"
+            variant="contained"
             disabled={isSubmitting}
           >
             registration
@@ -74,4 +69,4 @@ const RegistrationForm: React.SFC<IRegistrationFormProps & WithStyles<typeof sty
   );
 };
 
-export default withStyles(styles)(observer(RegistrationForm));
+export default observer(RegistrationForm);

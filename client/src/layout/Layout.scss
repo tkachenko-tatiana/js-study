@@ -1,0 +1,37 @@
+@import './normalize.scss';
+
+$primary-contrast-text: #fff;
+$max-form-width: 600px;
+
+body {
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .toolbarHomeLink {
+    text-decoration: none;
+    color: $primary-contrast-text;
+  }
+  
+  .appBarButton {
+    margin-left: 5px;
+  }
+
+  .paperForm {
+    width: 100%;
+    margin: 30px auto;
+    padding: 15px 20px;
+    max-width: $max-form-width;
+  }
+
+  .forgotPassword {
+    margin-top: 16px;
+  }
+
+  .submitButton {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+}

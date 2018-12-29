@@ -7,8 +7,8 @@
     "moduleResolution": "node",
     "allowJs": true,
     "typeRoots": [
-      "node_modules/@types",
-      "../node_modules/@types"
+      "../node_modules/@types",
+      "./node_modules/@types"
     ],
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,

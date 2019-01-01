@@ -38,6 +38,7 @@
     // Warns on comparison to a boolean literal, as in x === true.
     "no-boolean-literal-compare": true,
     "no-submodule-imports": false,
+    "object-shorthand-properties-first": false,
     "ordered-imports": false,
     "prefer-array-literal": false,
     "prefer-const": true,

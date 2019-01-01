@@ -13,11 +13,7 @@ const app = new Koa();
 //   }));
 
 // TODO Move to separate module
-app.use(bodyParser());
-app.use(async (ctx, next) => {
-  ctx.body = ctx.request.body;
-  await next();
-});
+app.use(bodyParser({ enableTypes: ['json'] }));
 app.use(managerFactory);
 app.use(errorhandler);
 app.use(router());

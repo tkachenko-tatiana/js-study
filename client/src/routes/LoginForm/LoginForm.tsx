@@ -2,36 +2,36 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, FormikActions } from 'formik';
 import TextFieldForm from '../../_shared/Form/TextField';
 import Paper from '@material-ui/core/Paper';
 
 import { required } from '../../utils/validate';
+import { asyncSubmit } from '../../utils/form-helper';
 import StyledLink from '../../_shared/StyledLink';
 import Routes from '../Routes';
 
 import styles from '../../layout/Layout.scss';
 
-interface ILoginFormValues {
+export interface ILoginFormValues {
   uid: string;
   password: string;
 }
 
 interface ILoginFormProps {
-  store: any;
+  store: ILoginProps;
 }
 
-const LoginForm: React.SFC<ILoginFormProps> = (props) => {
-  const { store } = props;
+interface ILoginProps {
+  login: (formValues: ILoginFormValues, actions: FormikActions<ILoginFormValues>) => Promise<void>;
+}
 
-  const onSubmit = () => {
-    store.registerUser();
-  };
+const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
 
   return (
     <Formik
       initialValues={{} as ILoginFormValues}
-      onSubmit={onSubmit}
+      onSubmit={asyncSubmit(store.login)}
     >
     {({ isSubmitting, values }) => (
       <Paper className={styles.paperForm}>

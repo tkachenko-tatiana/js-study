@@ -18,6 +18,7 @@ export interface IUserCourse {
   course: ICourse;
 }
 
-export interface IUserSession extends IUser {
+export interface IUserSession {
+  user: IUser;
   token: string;
 }

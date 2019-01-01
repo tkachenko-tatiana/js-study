@@ -36,12 +36,18 @@ export default class UserManager extends BaseManager<IUser> {
     const { password, ...userInfo } = params;
     const { hash, salt } = PasswordHelper.getHash(password);
 
-    return this.userRepository.update({
+    const { password: p, salt: s, activationToken, ...updatedUser } = await this.userRepository.update({
+      ...user,
       ...userInfo,
       activationToken: null,
       password: hash,
       salt
     });
+
+    return {
+      user: updatedUser,
+      token: TokenHelper.createToken(userInfo)
+    };
   }
 
   public async login(email: string, userPassword: string) {
@@ -78,5 +84,4 @@ export default class UserManager extends BaseManager<IUser> {
   public async forgotPassword(email: string) {
     return {};
   }
-
 }

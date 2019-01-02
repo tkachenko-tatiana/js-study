@@ -18,18 +18,31 @@ class User {
     return !!this.user.token;
   }
 
-  @action
+  @computed get isRegistered() {
+    return this.user.isRegistered;
+  }
+
+  @action.bound
   login(values: ILoginFormValues) {
     return UserApi.login(values)
-      .then((res) => {
-        console.log(res);
-        return res;
+    .then((res) => {
+      console.log(res);
+      return res;
     });
   }
 
-  @action
-  registerUser() {
-    this.user.isRegistered = true;
+  // change to async method api
+  @action.bound
+  register(values: any) {
+    return UserApi
+      .register(values)
+      .then((res) => {
+        if (res.success) {
+          // this.user.isRegistered = true;
+        }
+
+        return res;
+      });
   }
 }
 

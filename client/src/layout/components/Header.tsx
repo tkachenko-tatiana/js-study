@@ -29,7 +29,7 @@ const Header: React.SFC<IHeaderProps> = (props) => {
           <Link to={Routes.Main} className={styles.toolbarHomeLink} >App name</Link>
         </Typography>
         <div>
-          {store.isRegistered ?
+          {store.isAuthenticated ?
             <SignOutAuthButton className={styles.appBarButton} user={store.user} color="inherit" /> :
             (
               <React.Fragment>

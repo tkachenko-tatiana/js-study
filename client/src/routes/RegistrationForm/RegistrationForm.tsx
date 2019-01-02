@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { required } from '../../utils/validate';
 import styles from '../../layout/Layout.scss';
+import { asyncSubmit } from '../../utils/form-helper';
 
 interface IRegistrationFormProps {
   store: any;
@@ -16,38 +17,19 @@ interface IRegistrationFormProps {
 const RegistrationForm: React.SFC<IRegistrationFormProps> = (props) => {
   const { store } = props;
 
-  const onSubmit = () => {
-    store.registerUser();
-  };
-
   return (
     <Formik
       initialValues={{} as any}
-      onSubmit={onSubmit}
+      onSubmit={asyncSubmit(store.register)}
     >
     {({ isSubmitting }) => (
       <Paper className={styles.paperForm}>
         <Form>
           <Field
-            id="uid-name-field"
-            name="uid-name"
-            label="Name"
-            fullWidth
-            component={TextFieldForm}
-          />
-          <Field
             id="email-field"
             name="email"
             type="email"
             label="email*"
-            fullWidth
-            component={TextFieldForm}
-            validate={required}
-          />
-          <Field
-            id="uid-username-field"
-            name="uid-username"
-            label="user name*"
             fullWidth
             component={TextFieldForm}
             validate={required}
@@ -65,7 +47,7 @@ const RegistrationForm: React.SFC<IRegistrationFormProps> = (props) => {
         </Form>
       </Paper>
     )}
-  </Formik>
+    </Formik>
   );
 };
 

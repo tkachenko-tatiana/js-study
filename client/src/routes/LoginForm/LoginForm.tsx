@@ -33,53 +33,53 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
       initialValues={{} as ILoginFormValues}
       onSubmit={asyncSubmit(store.login)}
     >
-    {({ isSubmitting, values }) => (
-      <Paper className={styles.paperForm}>
-        <Form>
-          <Field
-            id="uid-field"
-            name="uid"
-            label="Login*"
-            fullWidth
-            component={TextFieldForm}
-            validate={required}
-          />
-          <Field
-            id="password-field"
-            name="password"
-            type="password"
-            label="Password*"
-            fullWidth
-            component={TextFieldForm}
-            validate={required}
-          />
-          <div className={styles.forgotPassword}>
-            <StyledLink
-              to={{
-                pathname: Routes.ForgotPassword,
-                state: { email: values.uid }
-              }}
-              size="small"
-              color="default"
-              variant="text"
+      {({ isSubmitting, values }) => (
+        <Paper className={styles.paperForm}>
+          <Form>
+            <Field
+              id="uid-field"
+              name="uid"
+              label="Login*"
+              fullWidth
+              component={TextFieldForm}
+              validate={required}
+            />
+            <Field
+              id="password-field"
+              name="password"
+              type="password"
+              label="Password*"
+              fullWidth
+              component={TextFieldForm}
+              validate={required}
+            />
+            <div className={styles.forgotPassword}>
+              <StyledLink
+                to={{
+                  pathname: Routes.ForgotPassword,
+                  state: { email: values.uid }
+                }}
+                size="small"
+                color="default"
+                variant="text"
+              >
+                Forgot your password?
+              </StyledLink>
+            </div>
+            <Button
+              className={styles.submitButton}
+              fullWidth
+              color="primary"
+              type="submit"
+              variant="contained"
+              disabled={isSubmitting}
             >
-              Forgot your password?
-            </StyledLink>
-          </div>
-          <Button
-            className={styles.submitButton}
-            fullWidth
-            color="primary"
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-          >
-            Login
-          </Button>
-        </Form>
-      </Paper>
-    )}
-  </Formik>
+              Login
+            </Button>
+          </Form>
+        </Paper>
+      )}
+    </Formik>
   );
 };
 

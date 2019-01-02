@@ -11,7 +11,7 @@ export default class UserApi {
   }
 
   public static activate = (data: any) => {
-    return Fetch.put('/api/activate/:token', data);
+    return Fetch.put('/api/user/:token', data);
   }
 
 }

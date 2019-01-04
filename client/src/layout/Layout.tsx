@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Header from './components/Header';
-import User from '../models/User';
 
 import './Layout.scss';
 
@@ -12,7 +11,7 @@ export default class Layout extends React.Component<ILayoutProps> {
   render() {
     return (
       <div>
-          <Header store={User} />
+          <Header />
           <main role="main">
             {this.props.children}
           </main>

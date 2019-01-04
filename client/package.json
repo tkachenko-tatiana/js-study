@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.7.1",
+    "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "formik": "^1.4.1",
     "mobx": "^5.8.0",

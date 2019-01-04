@@ -14,6 +14,8 @@ class User {
     isRegistered: false,
   };
 
+  @observable sholdShowAlertNotification = false;
+
   @computed get isAuthenticated() {
     return !!this.user.token;
   }
@@ -22,23 +24,26 @@ class User {
     return this.user.isRegistered;
   }
 
+  @action
+  closeAlertNotification = () => {
+    this.sholdShowAlertNotification = false;
+  }
+
   @action.bound
   login(values: ILoginFormValues) {
     return UserApi.login(values)
     .then((res) => {
-      console.log(res);
       return res;
     });
   }
 
-  // change to async method api
   @action.bound
   register(values: any) {
     return UserApi
       .register(values)
       .then((res) => {
         if (res.success) {
-          // this.user.isRegistered = true;
+          this.sholdShowAlertNotification = true;
         }
 
         return res;

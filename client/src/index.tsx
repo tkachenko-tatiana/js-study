@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-
+import {  Provider } from 'mobx-react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import User from './models/User';
 import App from './App';
 
 const theme = createMuiTheme({
@@ -25,7 +26,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <BrowserRouter>
     <MuiThemeProvider theme={theme}>
-      <App />
+      <Provider store={User}>
+        <App />
+      </Provider>
     </MuiThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')

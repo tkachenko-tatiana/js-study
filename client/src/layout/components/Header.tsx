@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -15,9 +15,7 @@ interface IHeaderProps {
   store: any;
 }
 
-const Header: React.SFC<IHeaderProps> = (props) => {
-  const { store } = props;
-
+const Header: React.SFC<IHeaderProps> = ({ store }) => {
   return (
     <AppBar position="static" className={styles.appBar}>
       <Toolbar className={styles.toolbar}>
@@ -26,10 +24,10 @@ const Header: React.SFC<IHeaderProps> = (props) => {
           color="inherit"
           noWrap
         >
-          <Link to={Routes.Main} className={styles.toolbarHomeLink} >App name</Link>
+          <Link to={Routes.Main} className={styles.toolbarHomeLink}>App name</Link>
         </Typography>
         <div>
-          {store.isRegistered ?
+          {store.isAuthenticated ?
             <SignOutAuthButton className={styles.appBarButton} user={store.user} color="inherit" /> :
             (
               <React.Fragment>
@@ -47,4 +45,4 @@ const Header: React.SFC<IHeaderProps> = (props) => {
   );
 };
 
-export default observer(Header);
+export default inject('store')(observer(Header));

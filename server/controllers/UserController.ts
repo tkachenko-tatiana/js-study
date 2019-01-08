@@ -1,7 +1,5 @@
 import Router from 'koa-router';
 import UserManager from '../managers/UserManager';
-import koaReq from '../middleware/koaReq';
-import Koa from 'koa';
 
 const router = new Router({ prefix: '/api/user' });
 

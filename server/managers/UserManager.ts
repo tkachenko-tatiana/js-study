@@ -50,6 +50,19 @@ export default class UserManager extends BaseManager<IUser> {
     };
   }
 
+  public async getUserByToken(activationToken: string) {
+    const user = await this.userRepository.findOne({ where: { activationToken } });
+
+    if (!user) {
+      throw new HttpError(httpStatus.BAD_REQUEST, 'Invalid activation token.');
+    }
+
+    return {
+      email: user.email
+    };
+
+  }
+
   public async login(email: string, userPassword: string) {
     if (!email || !userPassword) {
       throw new HttpError(httpStatus.BAD_REQUEST, 'Email or password are not provided.');

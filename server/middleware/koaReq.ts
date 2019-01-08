@@ -1,14 +1,12 @@
 import { IRouterContext } from 'koa-router';
 
-function koaReq(innerFunc: (ctx: IRouterContext) => Promise<object>) {
-  return (ctx: IRouterContext) => {
-    // TODO: Add logger
+async function koaReq(ctx: IRouterContext, next: () => Promise<any>) {
+  await next();
+  const data = ctx.body;
 
-    return innerFunc(ctx)
-      .then((data) => {
-        ctx.body = ({ success: true, data });
-      });
-  };
+  // TODO Add logger
+
+  ctx.body = ({ success: true, data });
 }
 
 export default koaReq;

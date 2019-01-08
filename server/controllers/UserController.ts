@@ -1,30 +1,35 @@
 import Router from 'koa-router';
-
 import UserManager from '../managers/UserManager';
 import koaReq from '../middleware/koaReq';
+import Koa from 'koa';
 
 const router = new Router({ prefix: '/api/user' });
 
 router
-  .post('/login', koaReq(async (ctx) => {
+  .post('/login', async (ctx) => {
     const manager = ctx.createManager(UserManager);
     const { email, password } = ctx.request.body;
-    return manager.login(email, password);
-  }))
+    ctx.body = manager.login(email, password);
+  })
 
-  .post('/register', koaReq(async (ctx) => {
+  .post('/register', async (ctx) => {
     const manager = ctx.createManager(UserManager);
     await manager.register(ctx.request.body.email);
-    return {};
-  }))
+    ctx.body = {};
+  })
 
-  .put('/activate/:token', koaReq(async (ctx) => {
+  .get('/activate/:token', async (ctx) => {
     const manager = ctx.createManager(UserManager);
-    return manager.activate(ctx.params.token, ctx.request.body);
-  }))
+    ctx.body = manager.getUserByToken(ctx.params.token);
+  })
 
-  .post('/forgotPassword', koaReq(async (ctx) => {
-    return [];
-  }));
+  .put('/activate/:token', async (ctx) => {
+    const manager = ctx.createManager(UserManager);
+    ctx.body = manager.activate(ctx.params.token, ctx.request.body);
+  })
+
+  .post('/forgotPassword', async (ctx) => {
+    ctx.body = [];
+  });
 
 export default router;

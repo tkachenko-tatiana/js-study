@@ -15,10 +15,12 @@ export class UserCourse1545834343064 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE "users" (
         "id" SERIAL NOT NULL,
-        "user_name" character varying(128) NOT NULL,
         "email" character varying(128) NOT NULL,
         "password" character varying(64),
         "salt" character varying(64),
+        "activation_token" character varying(128),
+        "first_name" character varying(128),
+        "last_name" character varying(128),
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
         "updated_at" TIMESTAMP NOT NULL DEFAULT now(),
         CONSTRAINT "PK_users" PRIMARY KEY ("id"))

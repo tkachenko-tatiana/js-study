@@ -2,17 +2,25 @@ import * as React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+import { injectStore } from '../../stores/StoreContext';
+import { observer } from 'mobx-react';
+import UIStore from '../../stores/UI';
 
-const AlertsNotification: React.SFC<any> = ({
+interface IAlertsNotificationProps {
+  uiStore: UIStore;
+}
+
+const AlertsNotification: React.SFC<IAlertsNotificationProps> = ({ uiStore: {
     isNotificationOpen,
     handleNotificationClose,
     notificationMessage,
-    autoHideDuration,
-  }) => (
+  }}) => {
+  console.log('isNotificationOpen: ', isNotificationOpen);
+  return (
     <Snackbar
       id="alert-notification"
       open={isNotificationOpen}
-      autoHideDuration={autoHideDuration || 12000}
+      autoHideDuration={12000}
       onClose={handleNotificationClose}
       message={<span> {notificationMessage} </span>}
       anchorOrigin={{
@@ -25,6 +33,7 @@ const AlertsNotification: React.SFC<any> = ({
         </IconButton>
       )}
     />
-);
+  );
+};
 
-export default AlertsNotification;
+export default injectStore('uiStore')(observer(AlertsNotification));

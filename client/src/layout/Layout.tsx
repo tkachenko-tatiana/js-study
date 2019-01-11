@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Header from './components/Header';
+import AlertNotification from '../_shared/AlertNotification';
 
 import './Layout.scss';
 
@@ -11,10 +12,12 @@ export default class Layout extends React.Component<ILayoutProps> {
   render() {
     return (
       <div>
-          <Header />
-          <main role="main">
-            {this.props.children}
-          </main>
+        <Header store={{}}/>
+        <main role="main">
+          {this.props.children}
+        </main>
+
+        <AlertNotification />
       </div>
     );
   }

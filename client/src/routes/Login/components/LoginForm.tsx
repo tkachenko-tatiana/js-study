@@ -3,30 +3,30 @@ import { observer, inject } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik, FormikActions } from 'formik';
-import TextFieldForm from '../../_shared/Form/TextField';
+import TextFieldForm from '../../../_shared/Form/TextField';
 import Paper from '@material-ui/core/Paper';
 
-import { required } from '../../utils/validate';
-import { asyncSubmit } from '../../utils/form-helper';
-import StyledLink from '../../_shared/StyledLink';
-import Routes from '../Routes';
+import { required } from '../../../utils/validate';
+import { asyncSubmit } from '../../../utils/form-helper';
+import StyledLink from '../../../_shared/StyledLink';
+import Routes from '../../Routes';
 
-import styles from '../../layout/Layout.scss';
+import styles from '../../../layout/Layout.scss';
+import { injectStore } from '../../../stores/StoreContext';
+import UserStore from '../../../stores/User';
 
 export interface ILoginFormValues {
-  uid: string;
+  email: string;
   password: string;
 }
 
 interface ILoginFormProps {
-  store: ILoginProps;
+  userStore: UserStore;
 }
 
-interface ILoginProps {
-  login: (formValues: ILoginFormValues, actions: FormikActions<ILoginFormValues>) => Promise<void>;
-}
+const LoginForm: React.SFC<ILoginFormProps> = ({ userStore: store }) => {
 
-const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
+  console.log('User store: ', store);
   return (
     <Formik
       initialValues={{} as ILoginFormValues}
@@ -36,9 +36,9 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
         <Paper className={styles.paperForm}>
           <Form>
             <Field
-              id="uid-field"
-              name="uid"
-              label="Login*"
+              id="email-field"
+              name="email"
+              label="Email*"
               fullWidth
               component={TextFieldForm}
               validate={required}
@@ -56,7 +56,7 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
               <StyledLink
                 to={{
                   pathname: Routes.ForgotPassword,
-                  state: { email: values.uid }
+                  state: { email: values.email }
                 }}
                 size="small"
                 color="default"
@@ -82,4 +82,4 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ store }) => {
   );
 };
 
-export default inject('store')(observer(LoginForm));
+export default injectStore('userStore')(observer(LoginForm));

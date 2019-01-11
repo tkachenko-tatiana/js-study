@@ -2,14 +2,14 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
-import TextField from '../../_shared/Form/TextField';
+import TextField from '../../../_shared/Form/TextField';
 import { Field, Form, Formik, FormikProps } from 'formik';
 import Paper from '@material-ui/core/Paper';
 
-import { asyncSubmit } from '../../utils/form-helper';
-import { required } from '../../utils/validate';
+import { asyncSubmit } from '../../../utils/form-helper';
+import { required } from '../../../utils/validate';
 
-import styles from '../../layout/Layout.scss';
+import styles from '../../../layout/Layout.scss';
 
 const ActivationForm: React.SFC<any> = ({
   initialData,

@@ -3,30 +3,27 @@ import { observer, inject } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
-import TextFieldForm from '../../_shared/Form/TextField';
-import AlertNotification from '../../_shared/AlertNotification';
+import TextFieldForm from '../../../_shared/Form/TextField';
 
 import Paper from '@material-ui/core/Paper';
 
-import { required } from '../../utils/validate';
-import styles from '../../layout/Layout.scss';
-import { asyncSubmit } from '../../utils/form-helper';
+import { required } from '../../../utils/validate';
+import styles from '../../../layout/Layout.scss';
+import { asyncSubmit } from '../../../utils/form-helper';
+import { injectStore } from '../../../stores/StoreContext';
+import UserStore from '../../../stores/User';
 
 interface IRegistrationFormProps {
-  store: any;
+  userStore: UserStore;
 }
 
-const RegistrationForm: React.SFC<IRegistrationFormProps> = ({ store }) => {
-
-  const onCloseModal = () => {
-    store.closeAlertNotification();
-  };
+const RegistrationForm: React.SFC<IRegistrationFormProps> = ({ userStore }) => {
 
   return (
     <React.Fragment>
       <Formik
         initialValues={{} as any}
-        onSubmit={asyncSubmit(store.register)}
+        onSubmit={asyncSubmit(userStore.register)}
       >
       {({ isSubmitting }) => (
           <Paper className={styles.paperForm}>
@@ -54,14 +51,8 @@ const RegistrationForm: React.SFC<IRegistrationFormProps> = ({ store }) => {
           </Paper>
       )}
       </Formik>
-      <AlertNotification
-        isNotificationOpen={store.sholdShowAlertNotification}
-        handleNotificationClose={onCloseModal}
-        notificationMessage="Email was send to confirm your email address"
-        autoHideDuration={6000}
-      />
     </React.Fragment>
   );
 };
 
-export default inject('store')(observer(RegistrationForm));
+export default injectStore('userStore')(observer(RegistrationForm));

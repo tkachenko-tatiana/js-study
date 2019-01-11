@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import stores from '../stores';
 
 export interface IApiResponse<T = {}> {
   body: { data: T, error?: any; };
@@ -40,6 +41,7 @@ class Fetch {
         return res.data;
       })
       .catch((error) => {
+        stores.uiStore.showNotification(error.message);
         return Promise.reject(error);
       });
   }

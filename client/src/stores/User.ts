@@ -1,9 +1,10 @@
 
 import { observable, computed, action } from 'mobx';
 import UserApi from '../api/User';
-import { ILoginFormValues } from '../routes/LoginForm/LoginForm';
+import { ILoginFormValues } from '../routes/Login/components/LoginForm';
+import stores from '../stores';
 
-class User {
+class UserStore {
   @observable user = {
     name: '',
     email: '',
@@ -14,8 +15,6 @@ class User {
     isRegistered: false,
   };
 
-  @observable sholdShowAlertNotification = false;
-
   @computed get isAuthenticated() {
     return !!this.user.token;
   }
@@ -25,25 +24,20 @@ class User {
   }
 
   @action
-  closeAlertNotification = () => {
-    this.sholdShowAlertNotification = false;
-  }
-
-  @action.bound
-  login(values: ILoginFormValues) {
+  public login = (values: ILoginFormValues) => {
     return UserApi.login(values)
     .then((res) => {
       return res;
     });
   }
 
-  @action.bound
-  register(values: any) {
+  @action
+  public register = (values: any) => {
     return UserApi
       .register(values)
       .then((res) => {
         if (res.success) {
-          this.sholdShowAlertNotification = true;
+          stores.uiStore.showNotification('Email was send to confirm your email address');
         }
 
         return res;
@@ -51,4 +45,4 @@ class User {
   }
 }
 
-export default new User();
+export default UserStore;

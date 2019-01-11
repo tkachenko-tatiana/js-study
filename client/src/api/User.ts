@@ -1,5 +1,5 @@
 import Fetch from '../services/Fetch';
-import { ILoginFormValues } from '../routes/LoginForm/LoginForm';
+import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 
 export default class UserApi {
   public static login = (data: ILoginFormValues) => {

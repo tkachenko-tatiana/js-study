@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ActivationForm from '../ActivationForm';
+import ActivationForm from './components/ActivationForm';
 
 const Activation: React.SFC<any> = () => {
   return (

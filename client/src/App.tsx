@@ -11,7 +11,7 @@ import Activation from './routes/Activation';
 
 const App = () => (
   <React.Fragment>
-    <MobxReactDevtools />
+    {/* <MobxReactDevtools /> */}
     <Layout>
       <Switch>
         <Route path={Routes.Main} component={Main} exact />

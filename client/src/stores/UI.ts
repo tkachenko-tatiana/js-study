@@ -12,7 +12,6 @@ class UIStore {
 
   @action
   showNotification = (notificationMessage: string) => {
-    console.log('!!!!!! ',  notificationMessage);
     this.isNotificationOpen = true;
     this.notificationMessage = notificationMessage;
   }

@@ -15,7 +15,6 @@ const AlertsNotification: React.SFC<IAlertsNotificationProps> = ({ uiStore: {
     handleNotificationClose,
     notificationMessage,
   }}) => {
-  console.log('isNotificationOpen: ', isNotificationOpen);
   return (
     <Snackbar
       id="alert-notification"

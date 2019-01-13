@@ -1,9 +1,8 @@
 import * as React from 'react';
-import LoginForm from '../LoginForm';
-import User from '../../models/User';
+import LoginForm from './components/LoginForm';
 
 const Login = () => (
-  <LoginForm store={User} />
+  <LoginForm />
 );
 
 export default Login;

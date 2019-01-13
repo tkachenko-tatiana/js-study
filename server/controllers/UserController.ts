@@ -7,7 +7,7 @@ router
   .post('/login', async (ctx) => {
     const manager = ctx.createManager(UserManager);
     const { email, password } = ctx.request.body;
-    ctx.body = manager.login(email, password);
+    ctx.body = await manager.login(email, password);
   })
 
   .post('/register', async (ctx) => {
@@ -18,12 +18,12 @@ router
 
   .get('/activate/:token', async (ctx) => {
     const manager = ctx.createManager(UserManager);
-    ctx.body = manager.getUserByToken(ctx.params.token);
+    ctx.body = await manager.getUserByToken(ctx.params.token);
   })
 
   .put('/activate/:token', async (ctx) => {
     const manager = ctx.createManager(UserManager);
-    ctx.body = manager.activate(ctx.params.token, ctx.request.body);
+    ctx.body = await manager.activate(ctx.params.token, ctx.request.body);
   })
 
   .post('/forgotPassword', async (ctx) => {

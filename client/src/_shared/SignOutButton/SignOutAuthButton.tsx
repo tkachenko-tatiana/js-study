@@ -14,19 +14,19 @@ const SignOutAuthButton: React.SFC<ISignOutWithRouterProps> = (props) => {
   const { history, className, user, staticContext, ...rest } = props;
 
   const onClick = () => {
-    user.isRegistered = false;
+    user.isAuthenticated = false;
     history.push(Routes.Main);
   };
 
   return (
-      <Button
-        onClick={onClick}
-        className={className}
-        {...rest}
-      >
-        Logout
-      </Button>
-    );
+    <Button
+      onClick={onClick}
+      className={className}
+      {...rest}
+    >
+      Logout
+    </Button>
+  );
 };
 
 export default observer(withRouter(SignOutAuthButton));

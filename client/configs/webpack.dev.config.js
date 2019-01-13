@@ -20,9 +20,9 @@ const devConfig = {
       host: 'localhost',
       contentBase: path.resolve(__dirname, '..', 'src'),
       watchContentBase: true,
-      // proxy: {
-      //   '/api': 'http://localhost:3100'
-      // },
+      proxy: {
+        '/api': 'http://localhost:3100'
+      },
       historyApiFallback: true,
       disableHostCheck: true,
     }

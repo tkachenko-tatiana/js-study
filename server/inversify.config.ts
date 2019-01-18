@@ -4,6 +4,7 @@ import CourseRepository from './db/repositories/CourseRepository';
 import UserCourseRepository from './db/repositories/UserCourseRepository';
 
 import UserManager from './managers/UserManager';
+import CourseManager from './managers/CourseManager';
 
 const container = new Container({ skipBaseClassChecks: true });
 
@@ -18,6 +19,7 @@ const container = new Container({ skipBaseClassChecks: true });
 // managers
 [
   UserManager,
+  CourseManager
 ]
   .forEach((manager: any) => container.bind<any>(manager).toSelf().inRequestScope());
 

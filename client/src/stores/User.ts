@@ -1,5 +1,5 @@
 
-import { observable, computed, action } from 'mobx';
+import { observable, computed, action, runInAction } from 'mobx';
 import UserApi from '../api/User';
 import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 import stores from '../stores';
@@ -25,22 +25,14 @@ class UserStore {
 
   @action
   public login = (values: ILoginFormValues) => {
-    return UserApi.login(values)
-    .then((res) => {
-      return res;
-    });
+    return UserApi.login(values);
   }
 
   @action
   public register = (values: any) => {
-    return UserApi
-      .register(values)
-      .then((res) => {
-        if (res.success) {
-          stores.uiStore.showNotification('Email was send to confirm your email address');
-        }
-
-        return res;
+    return UserApi.register(values)
+      .then(() => {
+        runInAction(() => stores.uiStore.showNotification('Email was send to confirm your email address'));
       });
   }
 }

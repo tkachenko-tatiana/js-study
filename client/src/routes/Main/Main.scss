@@ -1,5 +1,6 @@
 .card {
-  max-width: 200px;
+  max-width: 300px;
+  margin: 0 auto;
 
   .media {
     height: 0;
@@ -8,5 +9,6 @@
 
   .actions {
     display: flex;
+    justify-content: space-between
   }
 }

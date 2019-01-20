@@ -1,0 +1,33 @@
+image: node:latest
+
+services: 
+   - postgres
+
+before_script:
+  - npm install
+  - npx lerna bootstrap
+
+cache:
+  paths:
+    - node_modules/
+    - server/node_modules/
+    - client/node_modules/
+
+
+variables:
+  POSTGRES_DB: js-study
+  POSTGRES_USER: js
+  POSTGRES_PASSWORD: 123
+
+stages:
+  - build
+  - test
+
+test-server:
+  stage: test
+  variables:
+    TEST_DATABASE_URL: "postgresql://js:123@postgres:5432/js-study"
+  script:
+    - cd server
+    - npm run test:ci
+

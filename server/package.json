@@ -10,7 +10,8 @@
     "db:migration:generate": "ts-node ./node_modules/.bin/typeorm migration:generate -n name",
     "db:migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert",
     "postinstall": "npx lerna link",
-    "test": "cross-env NODE_ENV=test TS_NODE_TRANSPILE_ONLY=true mocha --opts __tests__/mocha.opts __tests__/**/*.test.ts"
+    "test": "cross-env NODE_ENV=test TS_NODE_TRANSPILE_ONLY=true mocha --opts __tests__/mocha.opts __tests__/**/*.test.ts",
+    "test:ci": "cross-env NODE_ENV=test npm run db:migrate && npm run test"
   },
   "dependencies": {
     "@types/expect": "^1.20.3",

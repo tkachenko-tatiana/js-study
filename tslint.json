@@ -12,6 +12,7 @@
     "ter-indent": [true, 2],
     "jsx-no-multiline-js": false,
     "jsx-boolean-value": false,
+    "jsx-curly-spacing": false,
     // Checks ordering of keys in object literals.
     // When using the default alphabetical ordering, additional blank lines may be used to group object properties together
     // while keeping the elements within each group in alphabetical order.

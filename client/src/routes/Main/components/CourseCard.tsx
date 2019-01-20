@@ -10,7 +10,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { ICourse } from '../../../../../sdk/models/Course';
 
+import DEFAULT_COURSE_LOGO from '../../../assets/course-default.png';
 import styles from '../Main.scss';
+import { Button } from '@material-ui/core';
 
 interface ICourseCardProps {
   cardInfo: ICourse;
@@ -32,7 +34,7 @@ const CourseCard: React.SFC<ICourseCardProps> = ({
       />
       <CardMedia
         className={styles.media}
-        // image={cardInfo.image}
+        image={DEFAULT_COURSE_LOGO}
         title={cardInfo.name}
       />
       <CardContent>
@@ -44,6 +46,7 @@ const CourseCard: React.SFC<ICourseCardProps> = ({
         <IconButton aria-label="Add to favorites">
           <FavoriteIcon />
         </IconButton>
+        <Button>Details</Button>
       </CardActions>
     </Card>
   );

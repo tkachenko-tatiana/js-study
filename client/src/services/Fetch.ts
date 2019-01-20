@@ -38,7 +38,7 @@ class Fetch {
   private fetch<T>(options: AxiosRequestConfig): Promise<T> {
     return axios(options)
       .then((res) => {
-        return res.data;
+        return res.data.data;
       })
       .catch((error) => {
         stores.uiStore.showNotification(error.message);

@@ -1,10 +1,34 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+import { injectStore } from '../../stores/StoreContext';
+import CourseStore from '../../stores/Course';
+import CourseCard from './components/CourseCard';
+import { Grid } from '@material-ui/core';
 
-const Main = () => {
+interface IMain {
+  courseStore: CourseStore;
+}
+export class Main extends React.Component<IMain> {
 
-  return (
-    <div>Main part</div>
-  );
-};
+  componentDidMount() {
+    this.props.courseStore.fetchCourses();
+  }
 
-export default Main;
+  render() {
+    const { courses } = this.props.courseStore;
+
+    return (
+      <Grid container spacing={16}>
+        {
+          courses.map(({ ...course }) => (
+            <Grid item xs={3}>
+              <CourseCard key={course.id} cardInfo={course}/>
+            </Grid>
+          ))
+        }
+      </Grid>
+    );
+  }
+}
+
+export default injectStore('courseStore')(observer(Main));

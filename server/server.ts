@@ -14,7 +14,9 @@ app.use(jwt({ secret: 'shared-secret' })
       /\/api\/user\/login\/*/,
       /\/api\/user\/register\/*/,
       /\/api\/user\/activate\/*/,
-      /\/api\/user\/forgotPassword\/*/
+      /\/api\/user\/forgotPassword\/*/,
+
+      /\/api\/course\/*/
     ]
   }));
 

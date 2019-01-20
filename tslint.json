@@ -23,7 +23,7 @@
     "no-consecutive-blank-lines": true,
     "no-console":false,
     "no-empty-interface": false,
-    "no-implicit-dependencies": [true, ["enzyme", "enzyme-adapter-react-16"]],
+    "no-implicit-dependencies": [true, ["enzyme", "enzyme-adapter-react-16", "mocha"]],
     "no-shadowed-variable": [
       false,
       {

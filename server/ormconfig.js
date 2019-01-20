@@ -7,6 +7,10 @@ if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL must be provided");
 }
 
+if (process.env.NODE_ENV === 'test' && !process.env.TEST_DATABASE_URL) {
+  throw new Error("TEST_DATABASE_URL must be provided");
+}
+
 const dbURl = process.env.NODE_ENV === 'test' ? process.env.TEST_DATABASE_URL : process.env.DATABASE_URL
 module.exports = {
   type: "postgres",

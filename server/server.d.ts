@@ -10,3 +10,10 @@ declare module 'koa' {
     body: any;
   }
 }
+
+declare module NodeJS {
+  interface Global {
+    db: any;
+    app: any;
+  }
+}

@@ -2,6 +2,10 @@ import Fetch from '../services/Fetch';
 import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 
 export default class UserApi {
+  public static fetchUserByToken = (token: string) => {
+    return Fetch.get(`/api/users/activation/${token}`);
+  }
+
   public static login = (data: ILoginFormValues) => {
     return Fetch.post('/api/user/login', data);
   }
@@ -10,8 +14,8 @@ export default class UserApi {
     return Fetch.post('/api/user/register', data);
   }
 
-  public static activate = (data: any) => {
-    return Fetch.put('/api/user/:token', data);
+  public static activate = (token: string, data: any) => {
+    return Fetch.put(`/api/user/activation/${token}`, data);
   }
 
 }

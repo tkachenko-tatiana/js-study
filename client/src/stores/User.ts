@@ -3,6 +3,7 @@ import { observable, computed, action, runInAction } from 'mobx';
 import UserApi from '../api/User';
 import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 import stores from '../stores';
+// import { IUserActivationFormValues } from '../../../sdk/models/User';
 
 class UserStore {
   @observable user = {
@@ -12,6 +13,7 @@ class UserStore {
     token: '',
     session: null,
     courses: [],
+    activationData: null,
     isRegistered: false,
   };
 
@@ -24,8 +26,28 @@ class UserStore {
   }
 
   @action
+  public getActivationData = (token: string) => {
+    UserApi.fetchUserByToken(token)
+      .then((data) => {
+        console.log('data', data);
+        this.user.activationData = data;
+      });
+  }
+
+  @action
+  public activate = (token: string, values: IUserActivationFormValues) => {
+    return UserApi.activate(token, values)
+      .then((res: any) => {
+        console.log(res);
+      });
+  }
+
+  @action
   public login = (values: ILoginFormValues) => {
-    return UserApi.login(values);
+    return UserApi.login(values)
+      .then((res) => {
+        console.log('login ', values, res);
+      });
   }
 
   @action

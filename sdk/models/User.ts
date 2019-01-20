@@ -12,6 +12,17 @@ export interface IUser {
   updatedAt?: Date;
 }
 
+export interface IUserActivationInitialData {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+}
+
+export interface IUserActivationFormValues extends IUserActivationInitialData {
+  password: string;
+  confirmPassword: string;
+}
+
 export interface IUserCourse {
   isComplete: boolean;
   user: IUser;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { default as MobxReactDevtools } from 'mobx-react-devtools';
+// import { default as MobxReactDevtools } from 'mobx-react-devtools';
 import { Route } from 'react-router';
 import { Switch } from 'react-router-dom';
 import Layout from './layout';

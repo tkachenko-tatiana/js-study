@@ -1,0 +1,4 @@
+--recursive
+--require ts-node/register
+--file ./__tests__/hooks
+--timeout 30000

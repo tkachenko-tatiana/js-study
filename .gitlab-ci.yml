@@ -31,3 +31,8 @@ test-server:
     - cd server
     - npm run test:ci
 
+test-client:
+  stage: test
+  script:
+    - cd client
+    - npm run test

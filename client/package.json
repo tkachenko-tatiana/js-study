@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node scripts/start.js",
     "build": "tsc --noEmit && NODE_ENV=production webpack --config ./configs/webpack.prod.config.js",
-    "postinstall": "npx lerna link"
+    "postinstall": "npx lerna link",
+    "test": "jest"
   },
   "dependencies": {
     "@material-ui/core": "^3.7.1",
@@ -37,6 +38,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.9",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
@@ -74,31 +76,20 @@
     "node": ">=8.11.3"
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "<rootDir>/jest_config/tsconfig.test.json"
-      }
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json",
-      "node"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>/jest_config/setupTests.js",
-    "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.(jsx?|tsx?)$",
     "testURL": "http://localhost/",
-    "transform": {
-      "^.+\\.(t|j)sx?$": "ts-jest"
-    },
-    "watchPathIgnorePatterns": [
-      "<rootDir>/node_modules/"
-    ]
+    "preset": "ts-jest",
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.test.(tsx|ts)"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setupTests.ts",
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$": "<rootDir>/__tests__/__mocks__/fileMock.ts",
+      "\\.(css|scss)$": "<rootDir>/__tests__/__mocks__/styleMock.ts"
+    }
   },
   "version": "0.0.1"
 }

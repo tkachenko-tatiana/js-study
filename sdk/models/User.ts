@@ -4,6 +4,7 @@ export interface IUser {
   id: number;
   email: string;
   password: string;
+  confirmPassword?: string;
   salt: string;
   activationToken: string | null;
   firstName: string;

@@ -3,7 +3,7 @@ import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 
 export default class UserApi {
   public static fetchUserByToken = (token: string) => {
-    return Fetch.get(`/api/users/activation/${token}`);
+    return Fetch.get(`/api/user/activate/${token}`);
   }
 
   public static login = (data: ILoginFormValues) => {
@@ -15,7 +15,7 @@ export default class UserApi {
   }
 
   public static activate = (token: string, data: any) => {
-    return Fetch.put(`/api/user/activation/${token}`, data);
+    return Fetch.put(`/api/user/activate/${token}`, data);
   }
 
 }

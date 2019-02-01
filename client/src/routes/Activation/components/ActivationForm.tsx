@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
-import { injectStore } from '../../../stores/StoreContext';
 
 import Button from '@material-ui/core/Button';
 import TextField from '../../../_shared/Form/TextField';
@@ -10,15 +8,10 @@ import Paper from '@material-ui/core/Paper';
 import { asyncSubmit } from '../../../utils/form-helper';
 import { required } from '../../../utils/validate';
 import { IUserActivationFormValues } from '../../../../../sdk/models/User';
-import UserStore from '../../../stores/User';
 
 import styles from '../../../layout/Layout.scss';
 
-interface ILoginFormProps {
-  userStore: UserStore;
-}
-
-interface IActivationFormProps extends ILoginFormProps {
+interface IActivationFormProps {
   activate: (
     token: string,
     formValues: IUserActivationFormValues
@@ -27,23 +20,20 @@ interface IActivationFormProps extends ILoginFormProps {
   token: string;
 }
 
-// interface IEnhanced {
-//   submit: (formValues: IUserActivationFormValues) => Promise<void>;
-// }
-
-// IActivationFormProps & IEnhanced
-
-const ActivationForm: React.SFC<any> = ({
+const ActivationForm: React.SFC<IActivationFormProps> = ({
+  activate,
   initialData,
+  token,
 }) => {
-  const submit = ({ activate, token }: IActivationFormProps) =>
-    asyncSubmit((values: IUserActivationFormValues) => activate(token, values));
+
+  const activateForm = (data: IUserActivationFormValues) =>  activate(token, data);
 
   return (
     <Paper className={styles.paperForm}>
       <Formik
-        onSubmit={submit}
-        initialValues={initialData as any}
+        enableReinitialize
+        onSubmit={asyncSubmit(activateForm)}
+        initialValues={initialData as IUserActivationFormValues}
       >
         {({ isSubmitting }: FormikProps<any>) => (
           <Form>
@@ -55,26 +45,24 @@ const ActivationForm: React.SFC<any> = ({
               component={TextField}
               validate={required}
             />
-
             <Field
               id="last-name-field"
               name="lastName"
-              label="Last name*"
+              label="Last name"
               fullWidth
               component={TextField}
-              validate={required}
             />
-
             <Field
               id="email-field"
               name="email"
               label="Email*"
               fullWidth
-              disabled
+              InputProps={{
+                readOnly: true,
+              }}
               component={TextField}
               validate={required}
             />
-
             <Field
               id="password-field"
               name="password"
@@ -84,7 +72,6 @@ const ActivationForm: React.SFC<any> = ({
               component={TextField}
               validate={required}
             />
-
             <Field
               id="repeat-password-field"
               name="confirmPassword"
@@ -112,4 +99,4 @@ const ActivationForm: React.SFC<any> = ({
   );
 };
 
-export default injectStore('userStore')(observer(ActivationForm));
+export default ActivationForm;

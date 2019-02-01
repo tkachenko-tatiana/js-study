@@ -36,13 +36,21 @@ export default class UserManager extends BaseManager<IUser> {
     const { password, ...userInfo } = params;
     const { hash, salt } = PasswordHelper.getHash(password);
 
-    const { password: p, salt: s, activationToken, ...updatedUser } = await this.userRepository.update({
-      ...user,
-      ...userInfo,
-      activationToken: null,
-      password: hash,
-      salt
-    });
+    const {
+        password: p,
+        salt: s,
+        activationToken,
+        confirmPassword,
+        createdAt,
+        updatedAt,
+        ...updatedUser
+      } = await this.userRepository.update({
+        ...user,
+        ...userInfo,
+        activationToken: null,
+        password: hash,
+        salt
+      });
 
     return {
       user: updatedUser,

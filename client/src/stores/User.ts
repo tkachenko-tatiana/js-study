@@ -3,7 +3,7 @@ import { observable, computed, action, runInAction } from 'mobx';
 import UserApi from '../api/User';
 import { ILoginFormValues } from '../routes/Login/components/LoginForm';
 import stores from '../stores';
-// import { IUserActivationFormValues } from '../../../sdk/models/User';
+import { IUserActivationFormValues } from '../../../sdk/models/User';
 
 class UserStore {
   @observable user = {
@@ -13,7 +13,7 @@ class UserStore {
     token: '',
     session: null,
     courses: [],
-    activationData: null,
+    activationData: {},
     isRegistered: false,
   };
 
@@ -28,17 +28,33 @@ class UserStore {
   @action
   public getActivationData = (token: string) => {
     UserApi.fetchUserByToken(token)
-      .then((data) => {
-        console.log('data', data);
-        this.user.activationData = data;
-      });
+      .then(
+        action((data) => {
+          this.user.activationData = data;
+        }));
   }
 
   @action
   public activate = (token: string, values: IUserActivationFormValues) => {
     return UserApi.activate(token, values)
       .then((res: any) => {
-        console.log(res);
+        /*
+          user: {
+            token: 'eyJhbGcikdQ298Dc'
+            confirmPassword: "1234"
+            createdAt: "2019-01-23T10:43:15.932Z"
+            email: "cherenkov.yuriy111@gmail.com"
+            firstName: "test"
+            id: 1
+            lastName: "sername"
+            updatedAt: "2019-01-23T17:54:19.651Z"
+          }
+        */
+        this.user = {
+          token: res.token,
+          ...res.user,
+          activationData: {},
+        };
       });
   }
 

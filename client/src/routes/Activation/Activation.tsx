@@ -2,20 +2,18 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { injectStore } from '../../stores/StoreContext';
 
-// import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import ActivationForm from './components/ActivationForm';
 import UserStore from '../../stores/User';
 
-// interface IActivationProps extends
-//   RouteComponentProps<{ token: string }>,
-//   UserStore {}
+interface IUserStore extends RouteComponentProps<{ token: string }> { userStore: UserStore; }
 
-export class Activation extends React.Component<any> {
+export class Activation extends React.Component<IUserStore> {
 
   componentDidMount() {
-    const { userStore }  = this.props;
+    const { userStore, match }  = this.props;
 
-    userStore.getActivationData(this.props.match.params.token);
+    userStore.getActivationData(match.params.token);
   }
 
   render() {
@@ -25,7 +23,7 @@ export class Activation extends React.Component<any> {
       <ActivationForm
         activate={userStore.activate}
         token={match.params.token}
-        initialData={userStore.activationData}
+        initialData={userStore.user.activationData}
       />
     );
   }

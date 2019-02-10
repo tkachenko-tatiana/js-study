@@ -11,7 +11,8 @@
     "db:migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert",
     "postinstall": "npx lerna link",
     "test": "cross-env NODE_ENV=test TS_NODE_TRANSPILE_ONLY=true mocha --opts __tests__/mocha.opts __tests__/**/*.test.ts",
-    "test:ci": "cross-env NODE_ENV=test npm run db:migrate && npm run test"
+    "test:ci": "cross-env NODE_ENV=test npm run db:migrate && npm run test",
+    "prod": "pm2 reload ecosystem.config.js"
   },
   "dependencies": {
     "@types/expect": "^1.20.3",
@@ -28,6 +29,7 @@
     "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
     "pg": "^7.7.1",
+    "pm2": "^3.2.9",
     "reflect-metadata": "^0.1.12",
     "require-all": "^3.0.0",
     "supertest": "^3.4.1",

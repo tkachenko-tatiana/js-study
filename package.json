@@ -4,6 +4,7 @@
   "description": "App for study",
   "license": "MIT",
   "scripts": {
+    "start": "sh scripts/production-install.sh && lerna run prod",
     "dev": "lerna run dev --parallel",
     "postinstall": "lerna bootstrap",
     "test": "lerna run test --parallel"

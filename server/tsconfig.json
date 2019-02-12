@@ -23,11 +23,8 @@
     "baseUrl": ".",
   },
   "include": [
-    "./*.ts",
+    "./**/*.ts",
     "./server.d.ts",
     "../typings.d.ts"
-  ],
-  "exclude": [
-    "./**/__tests__"
   ]
 }

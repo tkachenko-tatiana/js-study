@@ -8,7 +8,7 @@ import Routes from '../../routes/Routes';
 import UserStore from '../../stores/User';
 
 interface IUserStore extends UserStore {
-  isAuthenticated: boolean;
+  logoutUser: () => string;
 }
 
 interface ISignOutWithRouterProps extends RouteComponentProps, ButtonProps {

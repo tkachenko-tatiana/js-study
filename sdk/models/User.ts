@@ -34,3 +34,14 @@ export interface IUserSession {
   user: IUser;
   token: string;
 }
+
+interface IActivateUser {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+}
+export interface IUserActivateResponse {
+  user: IActivateUser;
+  token: string;
+}

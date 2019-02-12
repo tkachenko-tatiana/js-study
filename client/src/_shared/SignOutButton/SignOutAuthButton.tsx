@@ -5,16 +5,21 @@ import { RouteComponentProps } from 'react-router';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 
 import Routes from '../../routes/Routes';
+import UserStore from '../../stores/User';
+
+interface IUserStore extends UserStore {
+  isAuthenticated: boolean;
+}
 
 interface ISignOutWithRouterProps extends RouteComponentProps, ButtonProps {
-  user: any;
+  user: IUserStore;
 }
 
 const SignOutAuthButton: React.SFC<ISignOutWithRouterProps> = (props) => {
   const { history, className, user, staticContext, ...rest } = props;
 
   const onClick = () => {
-    user.isAuthenticated = false;
+    user.logoutUser();
     history.push(Routes.Main);
   };
 

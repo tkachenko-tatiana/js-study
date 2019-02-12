@@ -1,5 +1,6 @@
 import Fetch from '../services/Fetch';
 import { ILoginFormValues } from '../routes/Login/components/LoginForm';
+import { IUserActivationFormValues } from '../../../sdk/models/User';
 
 export default class UserApi {
   public static fetchUserByToken = (token: string) => {
@@ -14,7 +15,7 @@ export default class UserApi {
     return Fetch.post('/api/user/register', data);
   }
 
-  public static activate = (token: string, data: any) => {
+  public static activate = (token: string, data: IUserActivationFormValues) => {
     return Fetch.put(`/api/user/activate/${token}`, data);
   }
 

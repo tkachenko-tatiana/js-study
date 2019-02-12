@@ -26,7 +26,9 @@ const ActivationForm: React.SFC<IActivationFormProps> = ({
   token,
 }) => {
 
-  const activateForm = (data: IUserActivationFormValues) =>  activate(token, data);
+  const activateForm = (data: IUserActivationFormValues) =>  {
+    return activate(token, data);
+  };
 
   return (
     <Paper className={styles.paperForm}>
@@ -57,9 +59,9 @@ const ActivationForm: React.SFC<IActivationFormProps> = ({
               name="email"
               label="Email*"
               fullWidth
-              InputProps={{
-                readOnly: true,
-              }}
+              // InputProps={{
+              //   readOnly: true,
+              // }}
               component={TextField}
               validate={required}
             />

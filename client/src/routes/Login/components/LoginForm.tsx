@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, FormikProps } from 'formik';
 import TextFieldForm from '../../../_shared/Form/TextField';
 import Paper from '@material-ui/core/Paper';
 
@@ -31,7 +31,7 @@ const LoginForm: React.SFC<ILoginFormProps> = ({ userStore: store }) => {
       initialValues={{} as ILoginFormValues}
       onSubmit={asyncSubmit(store.login)}
     >
-      {({ isSubmitting, values }) => (
+      {({ isSubmitting, values }: FormikProps<ILoginFormValues>) => (
         <Paper className={styles.paperForm}>
           <Form>
             <Field

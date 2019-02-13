@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import Button from '@material-ui/core/Button';
 import { Field, Form, Formik } from 'formik';
@@ -18,7 +18,6 @@ interface IRegistrationFormProps {
 }
 
 const RegistrationForm: React.SFC<IRegistrationFormProps> = ({ userStore }) => {
-
   return (
     <React.Fragment>
       <Formik

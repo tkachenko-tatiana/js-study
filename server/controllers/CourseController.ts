@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 import CourseManager from '../managers/CourseManager';
 
-const router = new Router({ prefix: '/api/course' });
+const router = new Router({ prefix: '/course' });
 
 router
   .get('/', async (ctx) => {

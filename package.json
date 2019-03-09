@@ -2,15 +2,18 @@
   "main": "build/index.js",
   "name": "js-study",
   "description": "App for study",
-  "license": "MIT",
   "scripts": {
     "start": "sh scripts/production-install.sh && lerna run prod",
     "dev": "lerna run dev --parallel",
     "postinstall": "lerna bootstrap",
+    "db:migrate": "lerna run db:migrate --parallel",
+    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js",
     "test": "lerna run test --parallel"
   },
   "dependencies": {
+    "copyfiles": "^2.1.0",
     "lerna": "^3.8.0",
+    "rimraf": "^2.6.3",
     "ts-loader": "^5.3.2",
     "tslint": "^5.11.0",
     "tslint-react": "^3.6.0"

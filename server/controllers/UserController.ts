@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 import UserManager from '../managers/UserManager';
 
-const router = new Router({ prefix: '/api/user' });
+const router = new Router({ prefix: '/user' });
 
 router
   .post('/login', async (ctx) => {

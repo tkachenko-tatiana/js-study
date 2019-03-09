@@ -1,12 +1,14 @@
-import expect from 'expect';
 import 'mocha';
 import supertest, { SuperTest } from 'supertest';
+import { IGlobal } from '../models';
+
+declare const global: IGlobal;
 
 describe('User Controller', () => {
   let request: SuperTest<supertest.Test>;
 
   before(() => {
-    request = supertest.agent({}); // supertest.agent(global.server);
+    request = supertest.agent(global.server);
   });
 
   it('test', () => {

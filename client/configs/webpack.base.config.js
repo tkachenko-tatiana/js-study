@@ -16,6 +16,9 @@ module.exports = {
       path.resolve(__dirname, '..', 'src'),
       path.resolve(__dirname, '..', 'node_modules')
     ],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   module: {
     rules: [

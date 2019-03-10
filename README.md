@@ -10,4 +10,7 @@ Dependencies:
 ```sh
 npm install
 npm run dev
+
+run docker
+sudo docker-compose -f docker-compose.yml up
 ```

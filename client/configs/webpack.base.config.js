@@ -16,6 +16,9 @@ module.exports = {
       path.resolve(__dirname, '..', 'src'),
       path.resolve(__dirname, '..', 'node_modules')
     ],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   module: {
     rules: [
@@ -36,7 +39,13 @@ module.exports = {
         test: /\.scss$/,
         use: [
           "style-loader",
-          "css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]",
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            },
+          },
           "sass-loader"
         ]
       } 

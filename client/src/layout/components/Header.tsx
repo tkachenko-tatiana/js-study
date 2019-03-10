@@ -7,15 +7,22 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SignOutAuthButton from '../../_shared/SignOutButton';
 import Routes from '../../routes/Routes';
+import { injectStore } from '../../stores/StoreContext';
 
 import StyledLink from '../../_shared/StyledLink';
 import styles from '../Layout.scss';
 
-interface IHeaderProps {
-  store: any;
+import UserStore from '../../stores/User';
+
+interface IUserStore extends UserStore {
+  isAuthenticated: boolean;
 }
 
-const Header: React.SFC<IHeaderProps> = ({ store }) => {
+interface IHeaderProps  {
+  userStore: IUserStore;
+}
+
+const Header: React.SFC<IHeaderProps> = ({ userStore: user }) => {
   return (
     <AppBar position="static" className={styles.appBar}>
       <Toolbar className={styles.toolbar}>
@@ -27,8 +34,8 @@ const Header: React.SFC<IHeaderProps> = ({ store }) => {
           <Link to={Routes.Main} className={styles.toolbarHomeLink}>App name</Link>
         </Typography>
         <div>
-          {store.isAuthenticated ?
-            <SignOutAuthButton className={styles.appBarButton} user={store.user} color="inherit" /> :
+          {user.isAuthenticated ?
+            <SignOutAuthButton className={styles.appBarButton} user={user} color="inherit" /> :
             (
               <React.Fragment>
                 <StyledLink to={Routes.Login} className={styles.appBarButton} color="inherit">
@@ -45,4 +52,4 @@ const Header: React.SFC<IHeaderProps> = ({ store }) => {
   );
 };
 
-export default inject('store')(observer(Header));
+export default injectStore('userStore')(observer(Header));

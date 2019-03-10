@@ -22,7 +22,7 @@ export class Main extends React.Component<IMain> {
         {
           courses.map(({ ...course }) => (
             <Grid item xs={3}>
-              <CourseCard key={course.id} cardInfo={course}/>
+              <CourseCard cardInfo={course}/>
             </Grid>
           ))
         }

@@ -73,7 +73,7 @@
     "webpack-hot-middleware": "^2.24.3"
   },
   "engines": {
-    "node": ">=8.11.3"
+    "node": ">=9.2.0"
   },
   "jest": {
     "testURL": "http://localhost/",

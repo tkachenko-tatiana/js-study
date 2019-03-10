@@ -3,7 +3,7 @@ const Routes = {
   Login: '/login',
   Registration: '/registration',
   ForgotPassword: '/login/forgotPassword',
-  Activation: (token: string) => `/users/activation/${token}`,
+  Activation: (token: string) => `/user/activate/${token}`,
 };
 
 export default Routes;

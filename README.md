@@ -3,7 +3,7 @@
 ### Installation
 
 Dependencies:
- * NodeJS ^8.11.3
+ * NodeJS ^9.2.0
 
 1. Run development build
 

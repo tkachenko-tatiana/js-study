@@ -18,27 +18,26 @@
 //   localStorage.setItem(key, JSON.stringify(toPersist));
 // }
 
-function getPersistedState<T extends object>(key: string, store: any) {
-  const savedJson = localStorage.getItem(key);
-  const savedData = savedJson ? JSON.parse(savedJson) : null;
+// function getPersistedState<T extends object>(key: string, store: any) {
+//   const savedJson = localStorage.getItem(key);
+//   const savedData = savedJson ? JSON.parse(savedJson) : null;
 
-  return savedData ? { ...store.state as object, ...savedData as object } : store.state;
-}
+//   return savedData ? { ...store.state as object, ...savedData as object } : store.state;
+// }
 
-function persist<T extends any>(
-  key: string,
-  store: T,
-  // stateKeys?: string[]
-): T {
-  // store.state =
-  //   stateKeys
-  //     ? persistPartialState(key, store.state, stateKeys)
-  //     : persistFullState(key, store.state, store);
+// function persist<T extends any>(
+//   key: string,
+//   store: T,
+//   // stateKeys?: string[]
+// ): T {
+//   // store.state =
+//   //   stateKeys
+//   //     ? persistPartialState(key, store.state, stateKeys)
+//   //     : persistFullState(key, store.state, store);
 
-  console.log('store ', store, 'state ', store.state, 'key ', key);
-  store.state = getPersistedState(key, store);
+//   store.state = getPersistedState(key, store);
 
-  return store;
-}
+//   return store;
+// }
 
-export default persist;
+// export default persist;

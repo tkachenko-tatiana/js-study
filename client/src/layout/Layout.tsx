@@ -12,7 +12,7 @@ export default class Layout extends React.Component<ILayoutProps> {
   render() {
     return (
       <div>
-        <Header store={{}}/>
+        <Header />
         <main role="main">
           {this.props.children}
         </main>

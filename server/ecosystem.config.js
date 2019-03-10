@@ -6,7 +6,7 @@ module.exports = {
     exec_mode: 'cluster',
     env: {
       NODE_ENV: 'production',
-      DATABASE_URL: 'postgresql://postgres:123@10.10.82.147:5432/js-study',
+      DATABASE_URL: 'postgres://nqzbniuw:TeD8FnhH0SKrRGTOSfWxgRCdIbQF3IRM@stampy.db.elephantsql.com:5432/nqzbniuw',
       PUBLIC_URL: 'http://localhost:3333'
     }
   }]

@@ -1,4 +1,7 @@
 import connect from '../db/connect';
+import { IGlobal } from './models';
+
+declare const global: IGlobal;
 
 let connection: any;
 

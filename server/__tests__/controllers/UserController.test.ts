@@ -1,6 +1,8 @@
-import expect from 'expect';
 import 'mocha';
 import supertest, { SuperTest } from 'supertest';
+import { IGlobal } from '../models';
+
+declare const global: IGlobal;
 
 describe('User Controller', () => {
   let request: SuperTest<supertest.Test>;

@@ -7,7 +7,6 @@
     "noImplicitAny": true,
     "target": "esnext",
     "jsx": "react",
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,

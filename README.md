@@ -1,9 +1,16 @@
 
 ## Development
+### Installation
 
-```
-npm i
+Dependencies:
+ * NodeJS ^9.2.0
+
+1. Run development build
+
+```sh
+npm install
 npm run dev
 
-open in browser http://localhost:8080
+run docker
+sudo docker-compose -f docker-compose.yml up
 ```

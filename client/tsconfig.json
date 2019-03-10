@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "outDir": "./build/",
+    "strict": true,
+    "baseUrl": "./src",
+    "noImplicitAny": true,
+    "target": "esnext",
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["es6", "dom"]
+  },
+  "include": [
+      "./*.ts",
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "../typings.d.ts",
+  ],
+  "exclude": ["node_modules", "build"]
+}

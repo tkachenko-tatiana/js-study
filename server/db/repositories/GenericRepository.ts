@@ -64,7 +64,8 @@ export abstract class GenericRepository<TEntity extends TModel, TModel> implemen
   }
 
   public async updateWhere(criteria: FindConditions<TEntity>, entity: DeepPartial<TModel>): Promise<TModel[]> {
-    const result = await this.baseRepo.update(criteria, entity as DeepPartial<TEntity>);
+    // TODO: fix entity as DeepPartial<TEntity>
+    const result = await this.baseRepo.update(criteria, entity as any);
     const updatedRows = await this.baseRepo.findByIds(result.generatedMaps);
 
     return updatedRows;

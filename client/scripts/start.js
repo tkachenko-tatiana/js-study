@@ -5,7 +5,7 @@ process.on('unhandledRejection', err => {
 const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-
+// packages/react-scripts && node bin/react-scripts.js
 const {
   choosePort,
   createCompiler,
@@ -48,8 +48,22 @@ choosePort(HOST, DEFAULT_PORT)
 
     WebpackDevServer.addDevServerEntrypoints(config, config.devServer);
 
+    const devSocket = {
+      warnings: warnings =>
+        devServer.sockWrite(devServer.sockets, 'warnings', warnings),
+      errors: errors =>
+        devServer.sockWrite(devServer.sockets, 'errors', errors),
+    };
     // Create a webpack compiler that is configured with custom messages.
-    const compiler = createCompiler(webpack, config, 'portal-client', urls, false);
+    const compiler = createCompiler({
+      appName: 'js-study',
+      config,
+      devSocket,
+      urls,
+      useYarn: false,
+      useTypeScript: false,
+      webpack,
+    });
 
     const devServer = new WebpackDevServer(compiler, config.devServer);
     // Launch WebpackDevServer.

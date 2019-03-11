@@ -26,7 +26,7 @@ app.use(mount('/api', router()));
 //   ? path.resolve('..', 'client')
 //   : path.resolve('..', 'build', 'client');
 
-const staticFolder = path.resolve('..', 'client');
+const staticFolder = path.resolve('..', 'build', 'client');
 
 const root = new Router();
 root.get('*', async (ctx) => {

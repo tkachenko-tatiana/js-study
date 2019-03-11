@@ -8,7 +8,7 @@
     "postinstall": "lerna bootstrap",
     "db:migrate": "lerna run db:migrate --parallel",
     "post-build": "cd build && pwd && sh scripts/production-install.sh",
-    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js && post-build",
+    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js && npm run post-build",
     "test": "lerna run test --parallel"
   },
   "dependencies": {

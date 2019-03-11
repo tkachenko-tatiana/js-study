@@ -7,9 +7,8 @@
     "dev": "lerna run dev --parallel",
     "postinstall": "lerna bootstrap",
     "db:migrate": "lerna run db:migrate --parallel",
-    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js",
-    "test": "lerna run test --parallel",
-    "heroku-postbuild": "cd build && npm run build"
+    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js && cd build",
+    "test": "lerna run test --parallel"
   },
   "dependencies": {
     "copyfiles": "^2.1.0",

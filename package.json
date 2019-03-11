@@ -3,11 +3,12 @@
   "name": "js-study",
   "description": "App for study",
   "scripts": {
-    "start": "sh scripts/production-install.sh && lerna run prod",
+    "start": "lerna run prod",
     "dev": "lerna run dev --parallel",
     "postinstall": "lerna bootstrap",
     "db:migrate": "lerna run db:migrate --parallel",
-    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js && cd build && pwd",
+    "post-build": "cd build && pwd && sh scripts/production-install.sh",
+    "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js && post-build",
     "test": "lerna run test --parallel"
   },
   "dependencies": {

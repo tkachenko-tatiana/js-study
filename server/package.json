@@ -13,7 +13,8 @@
     "test": "cross-env NODE_ENV=test TS_NODE_TRANSPILE_ONLY=true mocha --opts __tests__/mocha.opts __tests__/**/*.test.ts",
     "test:ci": "cross-env NODE_ENV=test npm run db:migrate && npm run test",
     "build": "tsc --project .",
-    "prod": "pm2 reload ecosystem.config.js"
+    "prod": "node index.js",
+    "prodTest": "pm2 reload ecosystem.config.js"
   },
   "dependencies": {
     "@types/expect": "^1.20.4",

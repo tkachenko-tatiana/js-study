@@ -9,7 +9,7 @@
     "db:migrate": "lerna run db:migrate --parallel",
     "build": "rimraf build/* && lerna run build && node scripts/copy-build-files.js",
     "test": "lerna run test --parallel",
-    "heroku-postbuild": "cd build && npm rin build"
+    "heroku-postbuild": "cd build && npm run build"
   },
   "dependencies": {
     "copyfiles": "^2.1.0",

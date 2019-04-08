@@ -40,9 +40,6 @@ export default class UserManager extends BaseManager<IUser> {
         password: p,
         salt: s,
         activationToken,
-        confirmPassword,
-        createdAt,
-        updatedAt,
         ...updatedUser
       } = await this.userRepository.update({
         ...user,
@@ -82,7 +79,7 @@ export default class UserManager extends BaseManager<IUser> {
       throw new HttpError(httpStatus.UNAUTHORIZED, 'Wrong email or password');
     }
 
-    const { password, salt, ...userInfo } = user;
+    const { password, salt, activationToken, ...userInfo } = user;
 
     if (!password) {
       throw new HttpError(

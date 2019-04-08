@@ -21,7 +21,7 @@ export class Main extends React.Component<IMain> {
       <Grid container spacing={16}>
         {
           courses.map(({ ...course }) => (
-            <Grid item xs={3}>
+            <Grid item xs={3} key={course.id}>
               <CourseCard cardInfo={course}/>
             </Grid>
           ))

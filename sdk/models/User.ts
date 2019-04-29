@@ -1,16 +1,19 @@
 import { ICourse } from './Course';
 
-export interface IUser {
+export interface IShortUser {
   id: number;
   email: string;
-  password: string;
-  confirmPassword?: string;
-  salt: string;
-  activationToken: string | null;
   firstName: string;
   lastName: string;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export interface IUser extends IShortUser {
+  password: string;
+  confirmPassword?: string;
+  salt: string;
+  activationToken: string | null;
 }
 
 export interface IUserActivationInitialData {
@@ -32,16 +35,5 @@ export interface IUserCourse {
 
 export interface IUserSession {
   user: IUser;
-  token: string;
-}
-
-interface IActivateUser {
-  id: number;
-  email: string;
-  firstName: string;
-  lastName: string;
-}
-export interface IUserActivateResponse {
-  user: IActivateUser;
   token: string;
 }

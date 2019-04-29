@@ -20,6 +20,9 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom'
     }
   },
+  stats: {
+    colors: true,
+  },
   module: {
     rules: [
       {

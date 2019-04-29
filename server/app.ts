@@ -22,9 +22,11 @@ app.use(errorhandler);
 app.use(mount('/api', koaReq));
 app.use(mount('/api', router()));
 
-const staticFolder = process.env.NODE_ENV === 'production'
-  ? path.resolve('..', 'client')
-  : path.resolve('..', 'build', 'client');
+// const staticFolder = process.env.NODE_ENV === 'production'
+//   ? path.resolve('..', 'client')
+//   : path.resolve('..', 'build', 'client');
+
+const staticFolder = path.resolve('..', 'build', 'client');
 
 const root = new Router();
 root.get('*', async (ctx) => {

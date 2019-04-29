@@ -12,7 +12,6 @@ export class Activation extends React.Component<IUserStore> {
 
   componentDidMount() {
     const { userStore, match }  = this.props;
-
     userStore.getActivationData(match.params.token);
   }
 
@@ -23,7 +22,7 @@ export class Activation extends React.Component<IUserStore> {
       <ActivationForm
         activate={userStore.activate}
         token={match.params.token}
-        initialData={userStore.user.activationData}
+        initialData={userStore.activationData}
       />
     );
   }

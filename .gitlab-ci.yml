@@ -48,6 +48,8 @@ dev-deploy:
   stage: deploy
   script:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/fun-javascript.git
+    - git remote -v
+    - git branch
     - git push heroku develop:master
     - echo "Deployed to dev server"
   only:

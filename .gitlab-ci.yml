@@ -1,4 +1,4 @@
-image: node:latest
+image: node:11
 
 services: 
    - postgres
@@ -20,8 +20,15 @@ variables:
   POSTGRES_PASSWORD: 123
 
 stages:
+  - prepare
   - build
   - test
+  - deploy
+
+prepare:
+  stage: prepare
+  script:
+    - node --version
 
 test-server:
   stage: test
@@ -36,3 +43,12 @@ test-client:
   script:
     - cd client
     - npm run test
+
+dev-deploy:
+  stage: deploy
+  script:
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/fun-javascript.git
+    - git push heroku develop:master
+    - echo "Deployed to dev server"
+  only:
+    - develop

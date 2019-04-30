@@ -50,7 +50,7 @@ dev-deploy:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/fun-javascript.git
     - git remote -v
     - git branch
-    - git push heroku develop:master
+    - git push heroku HEAD:master
     - echo "Deployed to dev server"
   only:
     - develop

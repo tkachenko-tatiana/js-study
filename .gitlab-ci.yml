@@ -51,7 +51,7 @@ dev-deploy:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=node-heroku-dpl --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=fun-javascript --api-key=$HEROKU_API_KEY
     - echo "Deployed to dev server"
   only:
     - develop

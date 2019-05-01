@@ -9,7 +9,7 @@ interface IProvider {
   stores: StoresMap;
   children: React.ReactElement<any>;
 }
-export const StoreProvider: React.SFC<IProvider> = ({ stores, children }) => {
+export const StoreProvider: React.FC<IProvider> = ({ stores, children }) => {
   return (
     <StoreContext.Provider
       value={stores}
@@ -22,7 +22,7 @@ export const injectStore = <T extends keyof StoresMap>(storeName: T) => {
   return <P extends Pick<StoresMap, T>>(
     Component: React.ComponentType<P>
   ) => {
-    const withStore: React.SFC<Omit<P, T>> = ({ ...props }) => (
+    const withStore: React.FC<Omit<P, T>> = ({ ...props }) => (
       <StoreContext.Consumer>
         {
           (storesMap: StoresMap) => {

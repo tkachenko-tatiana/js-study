@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
+import { Field, Form, Formik } from 'formik';
 
 import Button from '@material-ui/core/Button';
-import { Field, Form, Formik } from 'formik';
-import TextFieldForm from '../../../_shared/Form/TextField';
-
 import Paper from '@material-ui/core/Paper';
+import TextFieldForm from '../../../_shared/Form/TextField';
 
 import { required } from '../../../utils/validate';
 import styles from '../../../layout/Layout.scss';
@@ -17,7 +16,7 @@ interface IRegistrationFormProps {
   userStore: UserStore;
 }
 
-const RegistrationForm: React.SFC<IRegistrationFormProps> = ({ userStore }) => {
+const RegistrationForm: React.FC<IRegistrationFormProps> = ({ userStore }) => {
   return (
     <React.Fragment>
       <Formik

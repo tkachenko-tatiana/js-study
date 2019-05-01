@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
+import { Field, Form, Formik, FormikProps } from 'formik';
 
 import Button from '@material-ui/core/Button';
-import { Field, Form, Formik, FormikProps } from 'formik';
 import TextFieldForm from '../../../_shared/Form/TextField';
 import Paper from '@material-ui/core/Paper';
 
@@ -24,7 +24,7 @@ interface ILoginFormProps {
   userStore: UserStore;
 }
 
-const LoginForm: React.SFC<ILoginFormProps> = ({ userStore: store }) => {
+const LoginForm: React.FC<ILoginFormProps> = ({ userStore: store }) => {
 
   return (
     <Formik

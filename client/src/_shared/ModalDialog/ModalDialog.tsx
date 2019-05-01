@@ -21,7 +21,7 @@ interface IModalDialog {
   disableOkHandling?: boolean;
 }
 
-export const ModalDialog: React.SFC<IModalDialog> = (props) => {
+export const ModalDialog: React.FC<IModalDialog> = (props) => {
   const {
     isOpen,
     dialogActions,

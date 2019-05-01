@@ -10,7 +10,7 @@ interface IAlertsNotificationProps {
   uiStore: UIStore;
 }
 
-const AlertsNotification: React.SFC<IAlertsNotificationProps> = ({ uiStore: {
+const AlertsNotification: React.FC<IAlertsNotificationProps> = ({ uiStore: {
     isNotificationOpen,
     handleNotificationClose,
     notificationMessage,

@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { Field, Form, Formik, FormikProps } from 'formik';
 
 import Button from '@material-ui/core/Button';
-import TextField from '../../../_shared/Form/TextField';
-import { Field, Form, Formik, FormikProps } from 'formik';
 import Paper from '@material-ui/core/Paper';
 
+import TextField from '../../../_shared/Form/TextField';
 import { asyncSubmit } from '../../../utils/form-helper';
 import { required } from '../../../utils/validate';
 import { IUserActivationFormValues } from '../../../../../sdk/models/User';
@@ -20,7 +20,7 @@ interface IActivationFormProps {
   token: string;
 }
 
-const ActivationForm: React.SFC<IActivationFormProps> = ({
+const ActivationForm: React.FC<IActivationFormProps> = ({
   activate,
   initialData,
   token,

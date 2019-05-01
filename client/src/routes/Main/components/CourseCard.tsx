@@ -18,7 +18,7 @@ interface ICourseCardProps {
   cardInfo: ICourse;
 }
 
-const CourseCard: React.SFC<ICourseCardProps> = ({
+const CourseCard: React.FC<ICourseCardProps> = ({
   cardInfo
 }) => {
   return (

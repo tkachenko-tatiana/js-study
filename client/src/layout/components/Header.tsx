@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,15 +14,11 @@ import styles from '../Layout.scss';
 
 import UserStore from '../../stores/User';
 
-// interface IUserStore extends UserStore {
-//   isAuthenticated: boolean;
-// }
-
 interface IHeaderProps  {
   userStore: UserStore;
 }
 
-const Header: React.SFC<IHeaderProps> = ({ userStore: user }) => {
+const Header: React.FC<IHeaderProps> = ({ userStore: user }) => {
   return (
     <AppBar position="static" className={styles.appBar}>
       <Toolbar className={styles.toolbar}>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { injectStore } from '../../stores/StoreContext';
-
 import { RouteComponentProps } from 'react-router';
+
+import { injectStore } from '../../stores/StoreContext';
 import ActivationForm from './components/ActivationForm';
 import UserStore from '../../stores/User';
 

@@ -1,12 +1,12 @@
-import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import { FieldProps } from 'formik';
+import TextField from '@material-ui/core/TextField';
 
 export interface ITextFieldFormProps extends FieldProps {
   displayedValue?: (value: string) => string;
 }
 
-const TextFieldForm: React.SFC<ITextFieldFormProps> = (props) => {
+const TextFieldForm: React.FC<ITextFieldFormProps> = (props) => {
   const {
     field: { value = '', ...field },
     form: { touched, errors, submitCount },

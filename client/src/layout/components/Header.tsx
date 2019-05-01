@@ -14,12 +14,12 @@ import styles from '../Layout.scss';
 
 import UserStore from '../../stores/User';
 
-interface IUserStore extends UserStore {
-  isAuthenticated: boolean;
-}
+// interface IUserStore extends UserStore {
+//   isAuthenticated: boolean;
+// }
 
 interface IHeaderProps  {
-  userStore: IUserStore;
+  userStore: UserStore;
 }
 
 const Header: React.SFC<IHeaderProps> = ({ userStore: user }) => {

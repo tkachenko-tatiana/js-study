@@ -16,7 +16,7 @@ interface IActivationFormProps {
     token: string,
     formValues: IUserActivationFormValues
   ) => Promise<void>;
-  initialData: Partial<IUserActivationFormValues>;
+  initialData: Partial<IUserActivationFormValues> | null;
   token: string;
 }
 

@@ -7,12 +7,12 @@ import Button, { ButtonProps } from '@material-ui/core/Button';
 import Routes from '../../routes/Routes';
 import UserStore from '../../stores/User';
 
-interface IUserStore extends UserStore {
-  logoutUser: () => string;
-}
+// interface IUserStore extends UserStore {
+//   logoutUser: () => string;
+// }
 
 interface ISignOutWithRouterProps extends RouteComponentProps, ButtonProps {
-  user: IUserStore;
+  user: UserStore;
 }
 
 const SignOutAuthButton: React.SFC<ISignOutWithRouterProps> = (props) => {
